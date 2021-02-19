@@ -30,40 +30,7 @@ NRSTrips <- get_NRSTrips()
 # you will get a warning about the fast method, this actually works better than the accurate method for this data set. 
 
 # Hydrochemistry data 
-Chemistry <- read_csv(paste0(rawD,.Platform$file.sep,"chemistry.csv"), na = c("(null)", NaN)) %>% 
-  rename(NRScode = NRS_TRIP_CODE,
-         SampleDepth_m = SAMPLE_DEPTH_M, Silicate_umol_L = SILICATE_UMOL_PER_L, Nitrate_umol_L =  NITRATE_UMOL_PER_L,
-         Phosphate_umol_L =  PHOSPHATE_UMOL_PER_L, Salinity = SALINITY, 
-         Ammonium_umol_L =  AMMONIUM_UMOL_PER_L,
-         Nitrite_umol_L =  NITRITE_UMOL_PER_L,
-         TCO2_umol_kg =  TCO2_UMOL_PER_KG,
-         TAlkalinity_umol_kg =  TALKALINITY_UMOL_PER_KG,
-         Oxygen_umol_L =  OXYGEN_UMOL_PER_L) %>% 
-  mutate(SampleDepth_m = as.character(SampleDepth_m),
-         NRScode = substring(NRScode,4),
-         Silicate_umol_L = ifelse(SILICATE_FLAG %in% c(3,4,9), NA, Silicate_umol_L), # remove all data flagged as bad or probably bad
-         Phosphate_umol_L = ifelse(PHOSPHATE_FLAG %in% c(3,4,9), NA, Phosphate_umol_L),
-         Ammonium_umol_L = ifelse(AMMONIUM_FLAG %in% c(3,4,9), NA, Ammonium_umol_L),
-         Nitrate_umol_L = ifelse(NITRATE_FLAG %in% c(3,4,9), NA, Nitrate_umol_L),
-         Nitrite_umol_L = ifelse(NITRITE_FLAG %in% c(3,4,9), NA, Nitrite_umol_L),
-         Oxygen_umol_L = ifelse(OXYGEN_FLAG %in% c(3,4,9), NA, Oxygen_umol_L),
-         TCO2_umol_kg = ifelse(CARBON_FLAG %in% c(3,4,9), NA, TCO2_umol_kg),
-         TAlkalinity_umol_kg = ifelse(ALKALINITY_FLAG %in% c(3,4,9), NA, TAlkalinity_umol_kg),
-         Salinity = ifelse(SALINITY_FLAG %in% c(3,4,9), NA, Salinity)) %>%
-  group_by(NRScode, SampleDepth_m) %>% 
-  summarise(Silicate_umol_L = mean(Silicate_umol_L, na.rm = TRUE), # some replicated samples from error picking up PHB data, needs addressing in database
-            Phosphate_umol_L = mean(Phosphate_umol_L, na.rm = TRUE),
-            Ammonium_umol_L = mean(Ammonium_umol_L, na.rm = TRUE),
-            Nitrate_umol_L = mean(Nitrate_umol_L, na.rm = TRUE),
-            Nitrite_umol_L = mean(Nitrite_umol_L, na.rm = TRUE),
-            Oxygen_umol_L = mean(Oxygen_umol_L, na.rm = TRUE),
-            TCO2_umol_kg = mean(TCO2_umol_kg, na.rm = TRUE),
-            TAlkalinity_umol_kg = mean(TAlkalinity_umol_kg, na.rm = TRUE),
-            Salinity = mean(Salinity, na.rm = TRUE),
-            .groups = "drop") %>% 
-  ungroup() %>% 
-  mutate_all(~ replace(., is.na(.), NA)) %>% 
-  untibble()
+Chemistry <- getChemistry()
 
 # Zooplankton biomass
 ZBiomass <-  read_csv(paste0(rawD,.Platform$file.sep,"nrs_biomass.csv"), na = "(null)") %>% 
@@ -125,24 +92,17 @@ Secchi <- read_csv(paste0(rawD,.Platform$file.sep,"nrs_TSS.csv"), na = "(null)")
          NRScode = substring(NRScode,4))
 
 # CTD Cast Data
-CTD <- read_csv(paste0(rawD,.Platform$file.sep,"nrs_CTD.csv"), na = "(null)",
-                col_types = cols(PRES = col_double(), # columns start with nulls so tidyverse annoyingly assigns col_logical()
-                                 PAR = col_double(),
-                                 SPEC_CNDC = col_double())) %>% 
-  rename(NRScode = NRS_TRIP_CODE, SampleDepth_m = PRES_REL, CTDDensity_kgm3 = DENS, 
-         CTDTemperature = TEMP, CTDPAR_umolm2s = PAR,
-         CTDConductivity_sm = CNDC, CTDSpecificConductivity_Sm = SPEC_CNDC, 
-         CTDSalinity = PSAL, CTDTurbidity_ntu = TURB, CTDChlF_mgm3 = CHLF) %>%
+CTD <- getCTD() %>%
     mutate(SampleDepth_m = as.character(round(SampleDepth_m, 0))) %>% 
-  select(-c(PRES, CTDSpecificConductivity_Sm)) %>%
-  group_by(NRScode, SampleDepth_m) %>% summarise(CTDDensity_kgm3 = mean(CTDDensity_kgm3, na.rm = TRUE),
-                                                 CTDTemperature = mean(CTDTemperature, na.rm = TRUE),
-                                                 CTDPAR_umolm2s = mean(CTDPAR_umolm2s, na.rm = TRUE),
-                                                 CTDConductivity_sm = mean(CTDConductivity_sm, na.rm = TRUE),
-                                                 CTDSalinity = mean(CTDSalinity, na.rm = TRUE),
-                                                 CTDChlF_mgm3 = mean(CTDChlF_mgm3, na.rm = TRUE),
-                                                 CTDTurbidity_ntu = mean(CTDTurbidity_ntu, na.rm = TRUE)) %>%
-  untibble()
+    select(-c(PRES, CTDSpecificConductivity_Sm)) %>%
+    group_by(NRScode, SampleDepth_m) %>% summarise(CTDDensity_kgm3 = mean(CTDDensity_kgm3, na.rm = TRUE),
+                                                   CTDTemperature = mean(CTDTemperature, na.rm = TRUE),
+                                                   CTDPAR_umolm2s = mean(CTDPAR_umolm2s, na.rm = TRUE),
+                                                   CTDConductivity_sm = mean(CTDConductivity_sm, na.rm = TRUE),
+                                                   CTDSalinity = mean(CTDSalinity, na.rm = TRUE),
+                                                   CTDChlF_mgm3 = mean(CTDChlF_mgm3, na.rm = TRUE),
+                                                   CTDTurbidity_ntu = mean(CTDTurbidity_ntu, na.rm = TRUE)) %>%
+    untibble()
 
 notrips <-  read_csv(paste0(rawD,.Platform$file.sep,"nrs_CTD.csv"), na = "(null)",
                      col_types = cols(PRES = col_double(), # columns start with nulls so tidyverse annoyingly assigns col_logical()

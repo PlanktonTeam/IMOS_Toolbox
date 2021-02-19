@@ -18,22 +18,10 @@ outD <- "Output"
 
 #### NRS Phytoplankton #### #################################################################################################################################
 
-# Bring in all NRS phytoplankton samples
-NRSPsamp <- read_csv(paste0(rawD,.Platform$file.sep,"PSampNRS.csv"), na = "(null)") %>% 
-  rename(Sample = SAMPLE, Station = STATION, Latitude = LATITUDE, Longitude = LONGITUDE, SampleDateLocal = SAMPLEDATE, NRScode = NRS_CODE) %>%
-  mutate(Year = year(SampleDateLocal),
-         Month = month(SampleDateLocal),
-         Day = day(SampleDateLocal),
-         Time_24hr = str_sub(SampleDateLocal, -8, -1)) # hms doesn"t seem to work on 00:00:00 times
-
-# Bring in plankton data
-NRSPdat <- read_csv(paste0(rawD,.Platform$file.sep,"NRS_phyto_raw.csv"), na = "(null)") %>%
-  rename(Sample = SAMPLE, TaxonName = TAXON_NAME, TaxonGroup = TAXON_GROUP, Genus = GENUS, Species = SPECIES, 
-         Cells_L = CELL_PER_LITRE, Biovolume_uM3_L = BIOVOLUME_UM3_PER_L)
-
-# Bring in Change Log
-NRSPcl <- read_csv(paste0(rawD,.Platform$file.sep,"ChangeLogNRSP.csv"), na = "(null)") %>%
-  rename(TaxonName = TAXON_NAME, StartDate = START_DATE, ParentName = PARENT_NAME)
+# Bring in all NRS phytoplankton samples, data and changelog
+NRSPsamp <- getNRSPhytoSamples()
+NRSPdat <- getNRSPhytoData()
+NRSPcl <- getNRSPhytoChangeLog()
 
 #### Raw Phytoplankton ####
 
@@ -375,22 +363,10 @@ fwrite(NRSSpecPB, file = paste0(outD,.Platform$file.sep,"NRS_phytoBioV_species_m
 
 
 #### NRS Zooplankton #### #################################################################################################################################
-# Bring in all NRS zooplankton samples
-NRSZsamp <- read_csv(paste0(rawD,.Platform$file.sep,"ZSampNRS.csv"), na = "(null)") %>% 
-  rename(Sample = SAMPLE, Station = STATION, Latitude = LATITUDE, Longitude = LONGITUDE, SampleDateLocal = SAMPLEDATE, NRScode = NRS_CODE) %>%
-  mutate(Year = year(SampleDateLocal),
-         Month = month(SampleDateLocal),
-         Day = day(SampleDateLocal),
-         Time_24hr = str_sub(SampleDateLocal, -8, -1)) # hms doesn"t seem to work on 00:00:00 times
-
-# Bring in plankton data
-NRSZdat <- read_csv(paste0(rawD,.Platform$file.sep,"NRS_zoop_raw.csv"), na = "(null)") %>%
-  rename(Sample = SAMPLE, TaxonName = TAXON_NAME, Copepod = TAXON_GROUP, TaxonGroup = TAXON_GRP01, 
-         Genus = GENUS, Species = SPECIES, ZAbund_m3 = TAXON_PER_M3)
-
-# Bring in Change Log
-NRSZcl <- read_csv(paste0(rawD,.Platform$file.sep,"ChangeLogNRSZ.csv"), na = "(null)") %>%
-  rename(TaxonName = TAXON_NAME, StartDate = START_DATE, ParentName = PARENT_NAME)
+# Bring in all NRS zooplankton samples, data and changelog
+NRSZsamp <- getNRSZooSamples()
+NRSZdat <- getNRSZooData()
+NRSZcl <- getNRSZooChangeLog()
 
 #### Raw Zooplankton ####
 
