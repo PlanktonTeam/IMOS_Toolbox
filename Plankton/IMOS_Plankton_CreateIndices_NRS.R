@@ -58,11 +58,20 @@ for (i in 1:n) {
   dat <- CTD_MLD %>% select(NRScode) %>% unique() %>% mutate(NRScode = as.factor(NRScode))
   nrscode <- dat$NRScode[[i]] %>% droplevels()
   mldData <- CTD_MLD %>% filter(NRScode == nrscode) %>% arrange(SampleDepth_m)
-  ref_T <- mldData %>% mutate(refd = abs(SampleDepth_m - 10), # find depth nearest to 10 m
+    
+  if (as.character(substr(nrscode, 0,3)) %in% c("DAR", "YON")){
+    refDepth  <-  5
+  }  
+    
+  if (!as.character(substr(nrscode, 0,3)) %in% c("DAR", "YON")){
+    refDepth  <-  10
+  }  
+  
+  ref_T <- mldData %>% mutate(refd = abs(SampleDepth_m - refDepth), # find depth nearest to 10 m
                               rankrefd = ave(refd, FUN = . %>% order %>% order)) %>%
     filter(rankrefd == 1)
   refT <- ref_T$CTDTemperature - 0.4 # temp at 10 m minus 0.4 deg C
-  mldData <- mldData %>% filter(SampleDepth_m >= ref_T$SampleDepth_m)
+  mldData <- mldData %>% filter(SampleDepth_m > ref_T$SampleDepth_m)
   mld_t <- mldData %>% mutate(temp = abs(CTDTemperature - refT),
                               ranktemp = ave(temp, FUN = . %>% order %>% order)) %>%
     filter(ranktemp == 1)
@@ -76,7 +85,7 @@ for (i in 1:n) {
   
   dcm <- (mldData %>% filter(CTDChlF_mgm3 == max(CTDChlF_mgm3)))$SampleDepth_m 
   dcm[is_empty(dcm)] = NA
-
+  
   MLD <- rbind(MLD, data.frame(NRScode = as.character(nrscode), MLD_temp = MLD_temp, MLD_sal = MLD_sal, DCM = dcm), stringsAsFactors = FALSE)  %>% drop_na(NRScode)    
 }
 
