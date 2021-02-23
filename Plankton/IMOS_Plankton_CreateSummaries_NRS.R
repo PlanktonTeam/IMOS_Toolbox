@@ -141,8 +141,9 @@ nrsls <- NRSPcl %>%
 # for non change log species
 
 NRSSpecP1 <- NRSPdat %>% 
+  mutate(TaxonName = paste0(Genus, ' ', Species)) %>% # remove comments about with flagellates or cilliates etc.
   filter(!TaxonName %in% levels(as.factor(nrsls$TaxonName))
-         & Species != "spp." & !is.na(Species) & !grepl("cf.", Species)) %>% 
+         & Species != "spp." & !is.na(Species) & !grepl("cf.", Species) & !grepl("/", Species)) %>% 
   group_by(Sample, TaxonName) %>% 
   summarise(Cells_L = sum(Cells_L, na.rm = TRUE), .groups = "drop")
 
@@ -157,6 +158,7 @@ NRSSpecP1 <- NRSPsamp %>%
 
 # add change log species with -999 for NA"s and real absences as 0"s
 NRSSpecP2 <- NRSPdat %>% 
+  mutate(TaxonName = paste0(Genus, ' ', Species)) %>% # remove comments about with flagellates or cilliates etc.
   filter(TaxonName %in% levels(as.factor(nrsls$TaxonName))
          & Species != "spp." & !is.na(Species) & !grepl("cf.", Species)) %>% 
   left_join(NRSPcl, by = "TaxonName") %>%
@@ -306,7 +308,9 @@ nrsls <- NRSPcl %>%
 
 # for non change log species
 
-NRSPdat1 <- NRSPdat %>% filter(!grepl("^(?!.*/~\\$)", TaxonName, perl = TRUE) &
+NRSPdat1 <- NRSPdat %>% 
+  mutate(TaxonName = paste0(Genus, ' ', Species)) %>% # remove comments about with flagellates or ciliates etc.
+  filter(!grepl("^(?!.*/~\\$)", TaxonName, perl = TRUE) &
                                 Species == "spp." &
                                !TaxonName %in% levels(as.factor(nrsls$TaxonName)) )
 NRSSpecPB1 <- NRSPdat %>% 
@@ -326,7 +330,9 @@ NRSSpecPB1 <- NRSPsamp %>%
   as.data.frame()
 
 # add change log species with -999 for NA"s and real absences as 0"s
-NRSPdat2 <- NRSPdat %>% filter(!grepl("^(?!.*/~\\$)", TaxonName, perl = TRUE) &
+NRSPdat2 <- NRSPdat %>% 
+  mutate(TaxonName = paste0(Genus, ' ', Species)) %>% # remove comments about with flagellates or ciliates etc.
+  filter(!grepl("^(?!.*/~\\$)", TaxonName, perl = TRUE) &
                                  Species == "spp." &
                                  TaxonName %in% levels(as.factor(nrsls$TaxonName)))
 

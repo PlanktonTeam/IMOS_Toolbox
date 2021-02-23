@@ -100,13 +100,16 @@ cprGenP2 <- cprPdat %>%
   summarise(PAbun_m3 = sum(PAbun_m3, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(cprGenP2$Genus)) {
+  Gen <- cprGenP2 %>% select(Genus) %>% unique()
+  Gen <- as.character(Gen$Genus[i] %>% droplevels())
+  
   Dates <- as.data.frame(cprGenP2) %>% 
-    filter(Genus == Genus[i]) %>% 
+    filter(Genus == Gen) %>% 
     slice(1)  %>% 
     droplevels()
   
   gen <- as.data.frame(cprGenP2) %>% 
-    filter(Genus == Genus[i]) %>% 
+    filter(Genus == Gen) %>% 
     droplevels() 
   
   gen <- cprPsamp %>% 
@@ -144,6 +147,7 @@ cls <- cprPcl %>%
 
 # for non change log species
 cprSpecP1 <- cprPdat %>% 
+  mutate(TaxonName = paste0(Genus, ' ', Species)) %>% # remove comments about with flagellates or ciliates etc.
   filter(!TaxonName %in% levels(as.factor(clg$TaxonName))
          & Species != "spp." & !is.na(Species) & !grepl("cf.", Species)) %>% 
   group_by(Sample, TaxonName) %>% 
@@ -160,6 +164,7 @@ cprSpecP1 <- cprPsamp %>%
 
 # add change log species with -999 for NA"s and real absences as 0"s
 cprSpecP2 <- cprPdat %>% 
+  mutate(TaxonName = paste0(Genus, ' ', Species)) %>% # remove comments about with flagellates or ciliates etc.
   filter(TaxonName %in% levels(as.factor(clg$TaxonName))
          & Species != "spp." & !is.na(Species) 
          & !grepl("cf.", Species)) %>% 
@@ -170,13 +175,16 @@ cprSpecP2 <- cprPdat %>%
   summarise(PAbun_m3 = sum(PAbun_m3, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(cprSpecP2$TaxonName)) {
+  Spe <- cprSpecP2 %>% select(TaxonName) %>% unique()
+  Spe <- as.character(Spe$TaxonName[i] %>% droplevels())
+  
   Dates <- as.data.frame(cprSpecP2) %>% 
-    filter(TaxonName == TaxonName[i]) %>% 
+    filter(TaxonName == Spe) %>% 
     slice(1) %>% 
     droplevels()
   
   spec <- as.data.frame(cprSpecP2) %>% 
-    filter(TaxonName == TaxonName[i]) %>% 
+    filter(TaxonName == Spe) %>% 
     droplevels() 
   
   spec <- cprPsamp %>% 
@@ -257,13 +265,16 @@ cprGenPB2 <- cprPdat %>%
   summarise(PBioV_um3_m3 = sum(BioVolume_um3_m3, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(cprGenPB2$Genus)) {
+  Gen <- cprGenPB2 %>% select(Genus) %>% unique()
+  Gen <- as.character(Gen$Genus[i] %>% droplevels())
+  
   Dates <- as.data.frame(cprGenPB2) %>% 
-    filter(Genus == Genus[i]) %>% 
+    filter(Genus == Gen) %>% 
     slice(1)  %>% 
     droplevels()
   
   gen <- as.data.frame(cprGenPB2) %>% 
-    filter(Genus == Genus[i]) %>% 
+    filter(Genus == Gen) %>% 
     droplevels() 
   
   gen <- cprPsamp %>% 
@@ -301,6 +312,7 @@ cls <- cprPcl %>%
 
 # for non change log species
 cprSpecPB1 <- cprPdat %>% 
+  mutate(TaxonName = paste0(Genus, ' ', Species)) %>% # remove comments about with flagellates or ciliates etc.
   filter(!TaxonName %in% levels(as.factor(clg$TaxonName))
          & Species != "spp." & !is.na(Species) & !grepl("cf.", Species)) %>% 
   group_by(Sample, TaxonName) %>% 
@@ -317,6 +329,7 @@ cprSpecPB1 <- cprPsamp %>%
 
 # add change log species with -999 for NA"s and real absences as 0"s
 cprSpecPB2 <- cprPdat %>% 
+  mutate(TaxonName = paste0(Genus, ' ', Species)) %>% # remove comments about with flagellates or ciliates etc.
   filter(TaxonName %in% levels(as.factor(clg$TaxonName))
          & Species != "spp." & !is.na(Species) 
          & !grepl("cf.", Species)) %>% 
@@ -327,13 +340,16 @@ cprSpecPB2 <- cprPdat %>%
   summarise(PBioV_um3_m3 = sum(BioVolume_um3_m3, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(cprSpecPB2$TaxonName)) {
+  Spe <- cprSpecPB2 %>% select(TaxonName) %>% unique()
+  Spe <- as.character(Spe$TaxonName[i] %>% droplevels())
+  
   Dates <- as.data.frame(cprSpecPB2) %>% 
-    filter(TaxonName == TaxonName[i]) %>% 
+    filter(TaxonName == Spe) %>% 
     slice(1) %>% 
     droplevels()
   
   spec <- as.data.frame(cprSpecPB2) %>% 
-    filter(TaxonName == TaxonName[i]) %>% 
+    filter(TaxonName == Spe) %>% 
     droplevels() 
   
   spec <- cprPsamp %>% 
@@ -447,13 +463,16 @@ cprGenZ2 <- cprZdat %>%
   summarise(ZAbun_m3 = sum(ZAbun_m3, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(cprGenZ2$Genus)) {
+  Gen <- cprGenZ2 %>% select(Genus) %>% unique()
+  Gen <- as.character(Gen$Genus[i] %>% droplevels())
+  
   Datesz <- as.data.frame(cprGenZ2) %>% 
-    filter(Genus == Genus[i]) %>% 
+    filter(Genus == Gen) %>% 
     slice(1) %>% 
     droplevels()
   
   genz <- as.data.frame(cprGenZ2) %>% 
-    filter(Genus == Genus[i]) %>% 
+    filter(Genus == Gen) %>% 
     droplevels() 
   
   genz <- cprZsamp %>% 
@@ -521,13 +540,16 @@ cprCop2 <- cprZdat %>%
   summarise(ZAbun_m3 = sum(ZAbun_m3, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(cprCop2$Species)) {
+  Spe <- cprCop2 %>% select(Species) %>% unique()
+  Spe <- as.character(Spe$Species[i] %>% droplevels())
+  
   Dates <- as.data.frame(cprCop2) %>% 
-    filter(Species == Species[i]) %>% 
+    filter(Species == Spe) %>% 
     slice(1) %>% 
     droplevels()
   
   copes <- as.data.frame(cprCop2) %>% 
-    filter(Species == Species[i]) %>%
+    filter(Species == Spe) %>%
     droplevels() 
   
   copes <- cprZsamp %>% 
@@ -587,13 +609,16 @@ cprnCop2 <- cprZdat %>%
   summarise(ZAbun_m3 = sum(ZAbun_m3, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(cprnCop2$Species)) {
+  Spe <- cprnCop2 %>% select(Species) %>% unique()
+  Spe <- as.character(Spe$Species[i] %>% droplevels())
+  
   Dates <- as.data.frame(cprnCop2) %>% 
-    filter(Species == Species[i]) %>% 
+    filter(Species == Spe) %>% 
     slice(1) %>% 
     droplevels()
   
   ncopes <- as.data.frame(cprnCop2) %>% 
-    filter(Species == Species[i]) %>% 
+    filter(Species == Spe) %>% 
     droplevels() 
   
   ncopes <- cprZsamp %>% 
