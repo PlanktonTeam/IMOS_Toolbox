@@ -23,16 +23,17 @@ get_NRSTrips <- function(){
   return(NRSTrips)
 }
 
-# Bring in all NRS phytoplankton samples
-getNRSPhytoSamples <- function(){
-    NRSPsamp <- read_csv(paste0(rawD,.Platform$file.sep,"PSampNRS.csv"), na = "(null)") %>% 
+# Bring in all NRS samples
+getNRSSamples <- function(){
+    NRSSamp <- read_csv(paste0(rawD,.Platform$file.sep,"PSampNRS.csv"), na = "(null)") %>% 
       rename(Sample = SAMPLE, Station = STATION, Latitude = LATITUDE, Longitude = LONGITUDE, SampleDateLocal = SAMPLEDATE, NRScode = NRS_CODE) %>%
       mutate(Year = year(SampleDateLocal),
              Month = month(SampleDateLocal),
              Day = day(SampleDateLocal),
              Time_24hr = str_sub(SampleDateLocal, -8, -1)) # hms doesn"t seem to work on 00:00:00 times
-    return(NRSPsamp)
+    return(NRSSamp)
 }
+
 # Bring in plankton data
 getNRSPhytoData <- function(){
   NRSPdat <- read_csv(paste0(rawD,.Platform$file.sep,"NRS_phyto_raw.csv"), na = "(null)") %>%
@@ -49,15 +50,15 @@ getNRSPhytoChangeLog <- function(){
 }
 
 # Bring in all NRS zooplankton samples
-getNRSZooSamples <- function(){
-  NRSZsamp <- read_csv(paste0(rawD,.Platform$file.sep,"ZSampNRS.csv"), na = "(null)") %>% 
-    rename(Sample = SAMPLE, Station = STATION, Latitude = LATITUDE, Longitude = LONGITUDE, SampleDateLocal = SAMPLEDATE, NRScode = NRS_CODE) %>%
-    mutate(Year = year(SampleDateLocal),
-           Month = month(SampleDateLocal),
-           Day = day(SampleDateLocal),
-           Time_24hr = str_sub(SampleDateLocal, -8, -1)) # hms doesn"t seem to work on 00:00:00 times
-  return(NRSZsamp)
-}
+# getNRSZooSamples <- function(){
+#   NRSZsamp <- read_csv(paste0(rawD,.Platform$file.sep,"ZSampNRS.csv"), na = "(null)") %>% 
+#     rename(Sample = SAMPLE, Station = STATION, Latitude = LATITUDE, Longitude = LONGITUDE, SampleDateLocal = SAMPLEDATE, NRScode = NRS_CODE) %>%
+#     mutate(Year = year(SampleDateLocal),
+#            Month = month(SampleDateLocal),
+#            Day = day(SampleDateLocal),
+#            Time_24hr = str_sub(SampleDateLocal, -8, -1)) # hms doesn"t seem to work on 00:00:00 times
+#   return(NRSZsamp)
+# }
 
 # Bring in zooplankton  abundance data
 getNRSZooData <- function(){
