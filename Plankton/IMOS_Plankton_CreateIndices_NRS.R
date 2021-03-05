@@ -140,7 +140,7 @@ Nuts <- getChemistry() %>%
             Oxygen_umol_L = mean(Oxygen_umol_L, na.rm = TRUE),
             TCO2_umol_kg = mean(TCO2_umol_kg, na.rm = TRUE),
             TAlkalinity_umol_kg = mean(TAlkalinity_umol_kg, na.rm = TRUE),
-            Salinity_umol_L = mean(Salinity, na.rm = TRUE),
+            Salinity_psu = mean(Salinity, na.rm = TRUE),
             .groups = "drop") %>% 
   mutate_all(~ replace(., is.na(.), NA)) %>% 
   untibble()
