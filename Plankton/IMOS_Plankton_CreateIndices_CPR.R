@@ -74,7 +74,7 @@ cprTrips <- cprTrips %>%
 # ggplot(data = cprTrips, aes(x = Longitude, y = Latitude, colour = BioRegion)) + geom_point()
 
 cprProps <- read_csv(paste0(raw, "CPR_SatData.csv"), na = "(null)") %>% 
-  rename(Sample = SAMPLE, ChlorophyllSatellite_mg_m3 = CHLA, WaterDepth_m = DEPTH_M)
+  rename(Sample = SAMPLE, ChlorophyllSatellite_mgm3 = CHLA, WaterDepth_m = DEPTH_M)
 
 satcpr <- cprTrips %>% 
   rename(Date = SampleDateUTC) 
@@ -136,9 +136,9 @@ HCratCpr <- zoodatacpr %>%
 # Diversity, evenness etc.     
 
 # Bring in plankton data
-CPRZcount <- read_csv(paste0(raw, "CPR_zoo_count_raw.csv"), na = "(null)") %>%
+CPRZcount <- read_csv(paste0(raw, "CPR_Zoop_CountRaw.csv"), na = "(null)") %>%
   rename(TaxonName = TAXON_NAME, Copepod = TAXON_GROUP, TaxonGroup = TAXON_GRP01, Sample = SAMPLE,
-                Genus= GENUS, Species = SPECIES, TaxonCount = COUNTS)
+                Genus= GENUS, Species = SPECIES, TaxonCount = COUNTS, SampleVol_L = SAMPVOL_L)
 
 zooCountCpr <-  cprZsamp %>% 
   left_join(CPRZcount, by = "Sample")
