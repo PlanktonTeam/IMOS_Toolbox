@@ -28,7 +28,7 @@ NRSPcl <- getNRSPhytoChangeLog()
 #### Raw Phytoplankton ####
 
 NRSRawP1 <- left_join(NRSSamp, NRSPdat, by = "Sample") %>% 
-  select(-c(TaxonGroup, Genus, Species, Biovolume_uM3_L, APHIA_ID)) %>% 
+  select(-c(TaxonGroup, Genus, Species, Biovolume_uM3L, APHIA_ID)) %>% 
   arrange(-desc(TaxonName)) 
 
 NRSRawP <- NRSRawP1 %>% 
@@ -37,7 +37,7 @@ NRSRawP <- NRSRawP1 %>%
   select(-Sample) %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
-fwrite(NRSRawP, file = paste0(outD,.Platform$file.sep,"NRS_phyto_raw_mat.csv"), row.names = FALSE)
+fwrite(NRSRawP, file = paste0(outD,.Platform$file.sep,"NRS_Phyto_RawMat.csv"), row.names = FALSE)
 
 #### Higher Trophic Groups Abund ####
 
@@ -57,7 +57,7 @@ NRSHTGP <-  NRSHTGP1 %>%
   arrange(desc(SampleDateLocal)) %>% 
   select(-Sample)
 
-fwrite(NRSHTGP, file = paste0(outD,.Platform$file.sep,"NRS_phyto_HTG_mat.csv"), row.names = FALSE)
+fwrite(NRSHTGP, file = paste0(outD,.Platform$file.sep,"NRS_Phyto_HTGMat.csv"), row.names = FALSE)
 
 #### Genus Abund ####
 
@@ -129,7 +129,7 @@ NRSGenP <-  NRSGenP1 %>%
   arrange(desc(SampleDateLocal))  %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
-fwrite(NRSGenP, file = paste0(outD,.Platform$file.sep,"NRS_phyto_genus_mat.csv"), row.names = FALSE)
+fwrite(NRSGenP, file = paste0(outD,.Platform$file.sep,"NRS_Phyto_GenusMat.csv"), row.names = FALSE)
 
 #### Species Abund ####
 
@@ -203,28 +203,28 @@ NRSSpecP <-  NRSSpecP1 %>%
   arrange(desc(SampleDateLocal))  %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
-fwrite(NRSSpecP, file = paste0(outD,.Platform$file.sep,"NRS_phyto_species_mat.csv"), row.names = FALSE)
+fwrite(NRSSpecP, file = paste0(outD,.Platform$file.sep,"NRS_Phyto_SpeciesMat.csv"), row.names = FALSE)
 
 ###########################################################################################
 #### Higher Trophic Groups BioV ####
 
 NRSHTGPB1 <- NRSPdat %>% 
   group_by(Sample, TaxonGroup) %>% 
-  summarise(BioV_um3_L = sum(Biovolume_uM3_L, na.rm = TRUE), .groups = "drop") %>%
+  summarise(BioV_um3L = sum(Biovolume_um3L, na.rm = TRUE), .groups = "drop") %>%
   filter(!TaxonGroup %in% c("Other","Coccolithophore", "Diatom","Protozoa")) 
 
 NRSHTGPB1 <- NRSSamp %>% 
   left_join(NRSHTGPB1, by = "Sample") %>% 
   mutate(TaxonGroup = ifelse(is.na(TaxonGroup), "Ciliate", TaxonGroup),
-         BioV_um3_L = ifelse(is.na(BioV_um3_L), 0, BioV_um3_L)) %>% 
+         BioV_um3L = ifelse(is.na(BioV_um3L), 0, BioV_um3L)) %>% 
   arrange(-desc(TaxonGroup))
 
 NRSHTGPB <-  NRSHTGPB1 %>% 
-  pivot_wider(names_from = TaxonGroup, values_from = BioV_um3_L, values_fill = list(BioV_um3_L = 0)) %>% 
+  pivot_wider(names_from = TaxonGroup, values_from = BioV_um3L, values_fill = list(BioV_um3L = 0)) %>% 
   arrange(desc(SampleDateLocal)) %>% 
   select(-Sample)
 
-fwrite(NRSHTGPB, file = paste0(outD,.Platform$file.sep,"NRS_phytoBioV_HTG_mat.csv"), row.names = FALSE)
+fwrite(NRSHTGPB, file = paste0(outD,.Platform$file.sep,"NRS_Phyto_BioVolHTGMat.csv"), row.names = FALSE)
 
 #### Genus ####
 
@@ -239,16 +239,16 @@ nrslg <- NRSPcl %>%
 NRSGenPB1 <- NRSPdat %>% 
   filter(!TaxonName %in% levels(as.factor(nrslg$TaxonName))) %>% 
   group_by(Sample, Genus) %>% 
-  summarise(BioV_um3_L = sum(Biovolume_uM3_L, na.rm = TRUE), .groups = "drop") %>% 
+  summarise(BioV_um3L = sum(Biovolume_um3L, na.rm = TRUE), .groups = "drop") %>% 
   drop_na(Genus) 
 
 NRSGenPB1 <- NRSSamp %>% 
   left_join(NRSGenPB1, by = "Sample") %>% 
   mutate(StartDate = ymd("2007-12-19"),
          Genus = ifelse(is.na(Genus), "Acanthoica", Genus),
-         BioV_um3_L = ifelse(is.na(BioV_um3_L), 0, BioV_um3_L)) %>% 
+         BioV_um3L = ifelse(is.na(BioV_um3L), 0, BioV_um3L)) %>% 
   group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
-  summarise(BioV_um3_L = sum(BioV_um3_L), .groups = "drop") %>% 
+  summarise(BioV_um3L = sum(BioV_um3L), .groups = "drop") %>% 
   as.data.frame()
 
 # add change log species with -999 for NA"s and real absences as 0"s
@@ -258,7 +258,7 @@ NRSGenPB2 <- NRSPdat %>%
   mutate(Genus = as_factor(Genus)) %>% 
   drop_na(Genus) %>%
   group_by(Sample, StartDate, Genus) %>% 
-  summarise(BioV_um3_L = sum(Biovolume_uM3_L, na.rm = TRUE), .groups = "drop") 
+  summarise(BioV_um3L = sum(Biovolume_um3L, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(NRSGenPB2$Genus)) {
   Gen = NRSGenPB2 %>% select(Genus) %>% unique() 
@@ -277,27 +277,27 @@ for (i in 1:nlevels(NRSGenPB2$Genus)) {
     left_join(gen, by = "Sample") %>%
     mutate(StartDate = replace(StartDate, is.na(StartDate), Dates$StartDate),
            Genus = replace(Genus, is.na(Genus), Dates$Genus),
-           BioV_um3_L = replace(BioV_um3_L, StartDate>SampleDateLocal, -999), 
-           BioV_um3_L = replace(BioV_um3_L, StartDate<SampleDateLocal & is.na(BioV_um3_L), 0)) %>% 
+           BioV_um3L = replace(BioV_um3L, StartDate>SampleDateLocal, -999), 
+           BioV_um3L = replace(BioV_um3L, StartDate<SampleDateLocal & is.na(BioV_um3L), 0)) %>% 
     group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
-    summarise(BioV_um3_L = sum(BioV_um3_L), .groups = "drop") %>% 
+    summarise(BioV_um3L = sum(BioV_um3L), .groups = "drop") %>% 
     as.data.frame()     
   NRSGenPB1 <- rbind(NRSGenPB1, gen)
 }
 
 NRSGenPB1 <- NRSGenPB1 %>% 
   group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
-  summarise(BioV_um3_L = max(BioV_um3_L), .groups = "drop") %>% 
+  summarise(BioV_um3L = max(BioV_um3L), .groups = "drop") %>% 
   arrange(-desc(Genus)) %>% 
   as.data.frame()
 
 # select maximum value of duplicates, but leave -999 for all other occurrences as not regularly identified
 NRSGenPB <-  NRSGenPB1 %>% 
-  pivot_wider(names_from = Genus, values_from = BioV_um3_L, values_fill = list(BioV_um3_L = 0)) %>% 
+  pivot_wider(names_from = Genus, values_from = BioV_um3L, values_fill = list(BioV_um3L = 0)) %>% 
   arrange(desc(SampleDateLocal))  %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
-fwrite(NRSGenPB, file = paste0(outD,.Platform$file.sep,"NRS_phytoBioV_genus_mat.csv"), row.names = FALSE)
+fwrite(NRSGenPB, file = paste0(outD,.Platform$file.sep,"NRS_Phyto_BioVolGenusMat.csv"), row.names = FALSE)
 
 #### Species ####
 
@@ -318,15 +318,15 @@ NRSSpecPB1 <- NRSPdat %>%
          Species != "spp." & !is.na(Species) & !grepl("cf.", Species)) %>% 
   rbind(NRSPdat1) %>% 
   group_by(Sample, TaxonName) %>% 
-  summarise(BioV_um3_L = sum(Biovolume_uM3_L, na.rm = TRUE), .groups = "drop")
+  summarise(BioV_um3L = sum(Biovolume_um3L, na.rm = TRUE), .groups = "drop")
 
 NRSSpecPB1 <- NRSSamp %>% 
   left_join(NRSSpecPB1, by = "Sample") %>% 
   mutate(StartDate = ymd("2007-12-19"),
          TaxonName = ifelse(is.na(TaxonName), "Paralia sulcata", TaxonName),
-         BioV_um3_L = ifelse(is.na(BioV_um3_L), 0, BioV_um3_L)) %>% 
+         BioV_um3L = ifelse(is.na(BioV_um3L), 0, BioV_um3L)) %>% 
   group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
-  summarise(BioV_um3_L = sum(BioV_um3_L), .groups = "drop") %>% 
+  summarise(BioV_um3L = sum(BioV_um3L), .groups = "drop") %>% 
   as.data.frame()
 
 # add change log species with -999 for NA"s and real absences as 0"s
@@ -344,7 +344,7 @@ NRSSpecPB2 <- NRSPdat %>%
   mutate(TaxonName = as_factor(TaxonName)) %>% 
   drop_na(TaxonName) %>%
   group_by(Sample, StartDate, TaxonName) %>% 
-  summarise(BioV_um3_L = sum(Cells_L, na.rm = TRUE), .groups = "drop") 
+  summarise(BioV_um3L = sum(Cells_L, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(NRSSpecPB2$TaxonName)) {
   Taxon = NRSSpecPB2 %>% select(TaxonName) %>% unique() 
@@ -363,27 +363,27 @@ for (i in 1:nlevels(NRSSpecPB2$TaxonName)) {
     left_join(spec, by = "Sample") %>%
     mutate(StartDate = replace(StartDate, is.na(StartDate), Dates$StartDate),
            TaxonName = replace(TaxonName, is.na(TaxonName), Dates$TaxonName),
-           BioV_um3_L = replace(BioV_um3_L, StartDate>SampleDateLocal, -999), 
-           BioV_um3_L = replace(BioV_um3_L, StartDate<SampleDateLocal & is.na(BioV_um3_L), 0)) %>% 
+           BioV_um3L = replace(BioV_um3L, StartDate>SampleDateLocal, -999), 
+           BioV_um3L = replace(BioV_um3L, StartDate<SampleDateLocal & is.na(BioV_um3L), 0)) %>% 
     group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
-    summarise(BioV_um3_L = sum(BioV_um3_L), .groups = "drop") %>% 
+    summarise(BioV_um3L = sum(BioV_um3L), .groups = "drop") %>% 
     as.data.frame()     
   NRSSpecPB1 <- rbind(NRSSpecPB1, spec)
 }
 
 NRSSpecPB1 <- NRSSpecPB1 %>% 
   group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
-  summarise(BioV_um3_L = max(BioV_um3_L), .groups = "drop") %>% 
+  summarise(BioV_um3L = max(BioV_um3L), .groups = "drop") %>% 
   arrange(-desc(TaxonName)) %>% 
   as.data.frame() 
 # select maximum value of duplicates, but leave -999 for all other occurences as not regularly identified
 
 NRSSpecPB <-  NRSSpecPB1 %>% 
-  pivot_wider(names_from = TaxonName, values_from = BioV_um3_L, values_fill = list(BioV_um3_L = 0)) %>% 
+  pivot_wider(names_from = TaxonName, values_from = BioV_um3L, values_fill = list(BioV_um3L = 0)) %>% 
   arrange(desc(SampleDateLocal))  %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
-fwrite(NRSSpecPB, file = paste0(outD,.Platform$file.sep,"NRS_phytoBioV_species_mat.csv"), row.names = FALSE)
+fwrite(NRSSpecPB, file = paste0(outD,.Platform$file.sep,"NRS_Phyto_BioVSpeciesMat.csv"), row.names = FALSE)
 
 #### NRS Zooplankton #### #################################################################################################################################
 # Bring in all NRS zooplankton samples, data and changelog
@@ -402,7 +402,7 @@ NRSRawZ <- NRSRawZ1 %>%
   arrange(desc(SampleDateLocal)) %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
-fwrite(NRSRawZ, file = paste0(outD,.Platform$file.sep,"NRS_zoop_raw_mat.csv"), row.names = FALSE)
+fwrite(NRSRawZ, file = paste0(outD,.Platform$file.sep,"NRS_Zoop_RawMat.csv"), row.names = FALSE)
 
 #### Higher Trophic Groups ####
 nrsHTGZ1 <- NRSZdat %>% 
@@ -421,7 +421,7 @@ nrsHTGZ <-  nrsHTGZ1 %>%
   select(-Sample) %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
-fwrite(nrsHTGZ, file = paste0(outD,.Platform$file.sep,"NRS_zoop_HTG_mat.csv"), row.names = FALSE)
+fwrite(nrsHTGZ, file = paste0(outD,.Platform$file.sep,"NRS_Zoop_HTGMat.csv"), row.names = FALSE)
 
 #### Genus ####
 
@@ -493,7 +493,7 @@ NRSGenZ <-  NRSGenZ1 %>%
   arrange(desc(SampleDateLocal)) %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
-fwrite(NRSGenZ, file = paste0(outD,.Platform$file.sep,"NRS_zoop_genus_mat.csv"), row.names = FALSE)
+fwrite(NRSGenZ, file = paste0(outD,.Platform$file.sep,"NRS_Zoop_GenusMat.csv"), row.names = FALSE)
 
 #### Copepods ####
 
@@ -567,7 +567,7 @@ NRSCop <-  NRSCop1 %>%
   arrange(desc(SampleDateLocal)) %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
-fwrite(NRSCop, file = paste0(outD,.Platform$file.sep,"NRS_zoop_copes_mat.csv"), row.names = FALSE)
+fwrite(NRSCop, file = paste0(outD,.Platform$file.sep,"NRS_Zoop_CopesMat.csv"), row.names = FALSE)
 
 #### Non-Copepods ####
 # for non change log species
@@ -636,4 +636,4 @@ NRSnCop <- NRSnCop1 %>%
 
 fwrite(NRSnCop, file = paste0(outD,.Platform$file.sep,"NRS_zoop_noncopes_mat.csv"), row.names = FALSE)
 
-# test <- read_csv(paste0(outD,.Platform$file.sep,"NRS_zoop_noncopes_mat.csv"))
+# test <- read_csv(paste0(outD,.Platform$file.sep,"NRS_Zoop_NoncopesMat.csv"))

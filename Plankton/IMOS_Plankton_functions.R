@@ -40,9 +40,9 @@ getNRSSamples <- function(){
 
 # Bring in plankton data
 getNRSPhytoData <- function(){
-  NRSPdat <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/NRS_phyto_raw.csv", na = "(null)") %>%
+  NRSPdat <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/NRS_Phyto_Raw.csv", na = "(null)") %>%
     rename(Sample = SAMPLE, TaxonName = TAXON_NAME, TaxonGroup = TAXON_GROUP, Genus = GENUS, Species = SPECIES, 
-           Cells_L = CELL_PER_LITRE, Biovolume_uM3_L = BIOVOLUME_UM3_PER_L)
+           Cells_L = CELL_L, Biovolume_um3L = BIOVOLUME_UM3L)
   return(NRSPdat)
 }
 

@@ -240,8 +240,8 @@ PhytoData <- getNRSSamples() %>%
 #   filter(str_detect(TaxonName, "Flagellate <10", negate = TRUE)) # Remove flagellates
 
 PhytoC <- PhytoData %>% 
-  select(NRScode, TaxonGroup, Cells_L, Biovolume_uM3_L) %>% 
-  mutate(BV_Cell = Biovolume_uM3_L / Cells_L, # biovolume of one cell
+  select(NRScode, TaxonGroup, Cells_L, Biovolume_um3L) %>% 
+  mutate(BV_Cell = Biovolume_um3L / Cells_L, # biovolume of one cell
          Carbon = ifelse(TaxonGroup == 'Dinoflagellate', 0.76*(BV_Cell)^0.819, # conversion to Carbon based on taxongroup and biovolume of cell
                          ifelse(TaxonGroup == 'Ciliate', 0.22*(BV_Cell)^0.939,
                                 ifelse(TaxonGroup == 'Cyanobacteria', 0.2, 0.288*(BV_Cell)^0.811 ))),
@@ -267,9 +267,9 @@ DDrat <- PhytoData %>%
   untibble()
 
 AvgCellVol <- PhytoData %>% 
-  filter(!is.na(Biovolume_uM3_L)) %>% 
+  filter(!is.na(Biovolume_um3L)) %>% 
   group_by(NRScode) %>% 
-  summarise(AvgCellVol_um3 = mean(sum(Biovolume_uM3_L)/sum(Cells_L)),
+  summarise(AvgCellVol_um3 = mean(sum(Biovolume_um3L)/sum(Cells_L)),
             .groups = "drop")
 
 # Diversity (phyto, diatoms, dinos)
