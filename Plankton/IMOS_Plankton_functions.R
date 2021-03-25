@@ -25,14 +25,17 @@ get_NRSTrips <- function(){
 
 # Bring in all NRS samples
 getNRSSamples <- function(){
-    NRSSamp <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/SampNRS.csv", na = "(null)") %>% 
-      rename(Sample = SAMPLE, Station = STATION, Latitude = LATITUDE, Longitude = LONGITUDE, SampleDateLocal = SAMPLEDATE, 
+    NRSSamp <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/NRS_Samp.csv", na = "(null)") %>% 
+      rename(Sample = SAMPLE, Station = STATION, Latitude = LATITUDE, Longitude = LONGITUDE, SampleDateLocal = SAMPLEDATELOCAL, 
              NRScode = NRS_CODE, Biomass_mgm3 = BIOMASS_MGM3, SampleType = SAMPLETYPE) %>%
       mutate(Year = year(SampleDateLocal),
              Month = month(SampleDateLocal),
              Day = day(SampleDateLocal),
-             Time_24hr = str_sub(SampleDateLocal, -8, -1)) # hms doesn"t seem to work on 00:00:00 times
-    return(NRSSamp)
+             Time_24hr = str_sub(SampleDateLocal, -8, -1), # hms doesn"t seem to work on 00:00:00 times
+             tz = tz_lookup_coords(Latitude, Longitude, method = "fast"),
+             SampleDateUTC = with_tz(force_tzs(SampleDateLocal, tz, roll = TRUE), "UTC")) %>% 
+      select(-tz)
+  return(NRSSamp)
 }
 
 # Bring in plankton data
