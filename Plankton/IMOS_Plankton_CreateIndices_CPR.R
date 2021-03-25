@@ -26,6 +26,7 @@ source("IMOS_Plankton_functions.R")
 cprTrips <- read_csv(paste0(raw, "CPR_Samp.csv"), na = "(null)") %>% 
   rename(Sample = SAMPLE, Route = ROUTE, Region = REGION, Latitude = LATITUDE, Longitude = LONGITUDE, SampleDateUTC = SAMPLEDATEUTC, 
          SampleType = SAMPLETYPE, Biomass_mgm3 = BIOMASS_MGM3) %>%
+  filter(!is.na(SampleType)) %>%
   mutate(Year = year(SampleDateUTC),
          Month = month(SampleDateUTC),
          Day = day(SampleDateUTC),
@@ -33,7 +34,7 @@ cprTrips <- read_csv(paste0(raw, "CPR_Samp.csv"), na = "(null)") %>%
          SampleDateUTC = as.character(SampleDateUTC)) %>% 
   select(c(Sample, Latitude:Time_24hr, Region, Route, PCI, Biomass_mgm3))
 
-mbr <-  readOGR("../General/Shapefiles/marine_regions_2012/")
+mbr <-  readOGR("../General/Shapefiles/marine_regions")
 mbr <- spTransform(mbr, CRS("+proj=longlat +datum=WGS84"))
 ## Read the segments.
 
@@ -167,14 +168,14 @@ phytodatacpr <- cprPsamp %>%
   filter(TaxonGroup != 'Other')
 
 PhytoCcpr <- phytodatacpr %>% 
-  select(Sample, TaxonGroup, PAbun_m3, BioVolume_um3_m3) %>% 
-  mutate(BV_Cell = BioVolume_um3_m3 / PAbun_m3, # biovolume of one cell
+  select(Sample, TaxonGroup, PAbun_m3, BioVolume_um3m3) %>% 
+  mutate(BV_Cell = BioVolume_um3m3 / PAbun_m3, # biovolume of one cell
          Carbon = ifelse(TaxonGroup == 'Dinoflagellate', 0.76*(BV_Cell)^0.819, # conversion to Carbon based on taxongroup and biovolume of cell
                          ifelse(TaxonGroup == 'Ciliate', 0.22*(BV_Cell)^0.939,
                                 ifelse(TaxonGroup == 'Cyanobacteria', 0.2, 0.288*(BV_Cell)^0.811 ))),
          Carbon_m3 = PAbun_m3 * Carbon) %>% # Carbon per m3
   group_by(Sample) %>% 
-  summarise(PhytoBiomassCarbon_pg_m3 = sum(Carbon_m3))
+  summarise(PhytoBiomassCarbon_pgm3 = sum(Carbon_m3))
 
 TPhytoCpr <- phytodatacpr %>% 
   group_by(Sample) %>% 
@@ -190,9 +191,9 @@ DDratcpr <- phytodatacpr %>%
   untibble
 
 AvgCellVolcpr <- phytodatacpr %>% 
-  filter(!is.na(BioVolume_um3_m3)) %>% 
+  filter(!is.na(BioVolume_um3m3)) %>% 
   group_by(Sample) %>% 
-  summarise(AvgCellVol_um3 = mean(sum(BioVolume_um3_m3)/sum(PAbun_m3)))
+  summarise(AvgCellVol_um3 = mean(sum(BioVolume_um3m3)/sum(PAbun_m3)))
 
 # Diversity (phyto, diatoms, dinos)
 # stick to abundance data here as otherwise we have FOV counts
@@ -269,7 +270,7 @@ IndicesCPR <-  cprTrips  %>%
   left_join(PhytoEvencpr, by = ("Sample")) %>%
   left_join(DiaEvencpr, by = ("Sample")) %>%
   left_join(DinoEvencpr, by = ("Sample")) %>%   
-  left_join(satcpr %>% select(Sample, sst_1d, chl_oc3_1d), by = ("Sample")) %>%  #add once run , GSLA, GSL, UCUR, VCUR
+#  left_join(satcpr %>% select(Sample, sst_1d, chl_oc3_1d), by = ("Sample")) %>%  #add once run , GSLA, GSL, UCUR, VCUR
   select(-Sample, -SampleType)
 
 # make indices table (nrows must always equal nrows of Trips) - old one for IMOS
