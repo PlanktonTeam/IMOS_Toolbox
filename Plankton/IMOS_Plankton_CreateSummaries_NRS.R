@@ -486,7 +486,7 @@ NRSGenZ1 <- NRSGenZ1 %>%
   summarise(ZAbund_m3 = max(ZAbund_m3), .groups = "drop") %>% 
   arrange(-desc(Genus)) %>% 
   as.data.frame() 
-# select maximum value of duplicates, but leave -999 for all other occurences as not regularly identified
+# select maximum value of duplicates, but leave -999 for all other occurrences as not regularly identified
 
 NRSGenZ <-  NRSGenZ1 %>% 
   pivot_wider(names_from = Genus, values_from = ZAbund_m3, values_fill = list(ZAbund_m3 = 0)) %>% 
@@ -634,6 +634,6 @@ NRSnCop <- NRSnCop1 %>%
   arrange(desc(SampleDateLocal)) %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
-fwrite(NRSnCop, file = paste0(outD,.Platform$file.sep,"NRS_zoop_noncopes_mat.csv"), row.names = FALSE)
+fwrite(NRSnCop, file = paste0(outD,.Platform$file.sep,"NRS_Zoop_NoncopesMat.csv"), row.names = FALSE)
 
 # test <- read_csv(paste0(outD,.Platform$file.sep,"NRS_Zoop_NoncopesMat.csv"))

@@ -208,7 +208,7 @@ HCrat <- ZooData %>%
 
 # Bring in plankton data
 ZooCount <- getNRSSamples() %>% 
-  left_join(getNRSZooCount(), by = "NRScode")
+  left_join(getNRSZooCount(), by = "Sample")
 
 n <- ZooCount %>% 
   filter(Copepod == 'COPEPOD' & Species != "spp." & !is.na(Species) & !grepl("cf.", Species) & !grepl("grp", Species)) %>% 

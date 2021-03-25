@@ -55,24 +55,23 @@ getNRSPhytoChangeLog <- function(){
 
 # Bring in zooplankton  abundance data
 getNRSZooData <- function(){
-  NRSZdat <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/NRS_zoop_raw.csv", na = "(null)") %>%
+  NRSZdat <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/NRS_Zoop_Raw.csv", na = "(null)") %>%
     rename(Sample = SAMPLE, TaxonName = TAXON_NAME, Copepod = TAXON_GROUP, TaxonGroup = TAXON_GRP01, 
-         Genus = GENUS, Species = SPECIES, ZAbund_m3 = TAXON_PER_M3)
+         Genus = GENUS, Species = SPECIES, ZAbund_m3 = ZOOP_ABUNDANCE_M3)
   return(NRSZdat)
 }
 
 # Bring in zooplankton  abundance data
 getNRSZooCount <- function(){
-  NRSZcount <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/NRS_zoop_count_raw.csv", na = "(null)") %>%
-    dplyr::rename("TaxonName" = "TAXON_NAME", "Copepod" = "TAXON_GROUP", 
-                  "TaxonGroup" = "TAXON_GRP01", "NRScode" = "NRS_CODE",
-                  "Genus" = "GENUS", "Species" = "SPECIES", "TaxonCount" = "TAXON_COUNT", SampVolL = SAMPVOLL)
+  NRSZcount <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/NRS_Zoop_CountRaw.csv", na = "(null)") %>%
+    rename(TaxonName = TAXON_NAME, Copepod = TAXON_GROUP, TaxonGroup = TAXON_GRP01, Sample = SAMPLE,
+           Genus = GENUS, Species = SPECIES, TaxonCount = COUNTS, SampVol_L = SAMPVOL_L)
   return(NRSZcount)
 }
 
 # Bring in Change Log
 getNRSZooChangeLog <- function(){
-  NRSZcl <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/ChangeLogNRSZ.csv", na = "(null)") %>%
+  NRSZcl <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/NRS_Zoop_ChangeLog.csv", na = "(null)") %>%
     rename(TaxonName = TAXON_NAME, StartDate = START_DATE, ParentName = PARENT_NAME)
   return(NRSZcl)
 }
