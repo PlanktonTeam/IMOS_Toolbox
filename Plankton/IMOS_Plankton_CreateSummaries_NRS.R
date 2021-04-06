@@ -394,7 +394,7 @@ NRSZcl <- getNRSZooChangeLog()
 #### Raw Zooplankton ####
 
 NRSRawZ1 <- left_join(NRSSamp, NRSZdat, by = "Sample") %>% 
-  select(-c(Sample, Copepod, TaxonGroup, Genus, Species)) %>% 
+  select(-c(Sample, Copepod, TaxonGroup, Genus, Species, Biomass_mgm3, SampleType, SPCODE)) %>% 
   arrange(-desc(TaxonName)) 
 
 NRSRawZ <- NRSRawZ1 %>% 
@@ -403,6 +403,19 @@ NRSRawZ <- NRSRawZ1 %>%
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
 fwrite(NRSRawZ, file = paste0(outD,.Platform$file.sep,"NRS_Zoop_RawMat.csv"), row.names = FALSE)
+
+### Sex and stage binned
+
+NRSIdsZ <- left_join(NRSSamp, NRSZdat, by = "Sample") %>%
+  mutate(TaxonName = ifelse(is.na(Genus), TaxonName, paste0(Genus, ' ', Species))) %>%
+  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, SampleDateUTC, TaxonName) %>%
+  summarise(ZAbund_m3 = sum(ZAbund_m3, na.rm = TRUE)) %>%
+  arrange(-desc(TaxonName))  %>% 
+  pivot_wider(names_from = TaxonName, values_from = ZAbund_m3, values_fill = list(ZAbund_m3 = 0)) %>% 
+  arrange(desc(SampleDateLocal)) %>% 
+  mutate(SampleDateLocal = as.character(SampleDateLocal))
+
+fwrite(NRSIdsZ, file = paste0(outD,.Platform$file.sep,"NRS_Zoop_IDsMat.csv"), row.names = FALSE)
 
 #### Higher Trophic Groups ####
 nrsHTGZ1 <- NRSZdat %>% 
