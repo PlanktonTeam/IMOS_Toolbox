@@ -34746,6 +34746,7 @@ SAMPLE,TAXON_NAME,TAXON_GROUP,GENUS,SPECIES,SPCODE,COUNTS,SAMPVOL_L
 560-81,Coscinodiscus spp. 400-500 µm,Centric diatom,Coscinodiscus,spp.,148917,0,1
 560-81,Tripos massiliensis,Dinoflagellate,Tripos (Tripoceratium),massiliensis,841261,0,1
 560-81,Tripos trichoceros,Dinoflagellate,Tripos (Tripoceratium),trichoceros,842517,0,1
+563-57,Nematocysts,Other,(null),(null),(null),0,1
 541-3,Centric diatom 10-20 µm,Centric diatom,(null),(null),(null),1,1
 541-3,Chaetoceros bulbosus,Centric diatom,Chaetoceros,bulbosus,341472,1,1
 541-3,Chaetoceros peruvianus < 40 µm cell width,Centric diatom,Chaetoceros (Phaeoceros),peruvianus,178185,1,1
@@ -39320,6 +39321,8 @@ SAMPLE,TAXON_NAME,TAXON_GROUP,GENUS,SPECIES,SPCODE,COUNTS,SAMPVOL_L
 560-93,Tripos macroceros type,Dinoflagellate,Tripos (Tripoceratium),macroceros type,494057,0,1
 560-93,Tripos massiliensis,Dinoflagellate,Tripos (Tripoceratium),massiliensis,841261,0,1
 560-93,Coscinodiscus spp. 400-500 µm,Centric diatom,Coscinodiscus,spp.,148917,0,1
+560-77,Tripos muelleri type,Dinoflagellate,Tripos (Tripoceratium),muelleri type,494057,0,1
+560-77,Tripos massiliensis,Dinoflagellate,Tripos (Tripoceratium),massiliensis,841261,0,1
 497-5,Tripos carriensis,Dinoflagellate,Tripos (Tripoceratium),carriensis,837448,0,1
 497-5,Tripos massiliensis,Dinoflagellate,Tripos (Tripoceratium),massiliensis,841261,0,1
 497-5,Tripos trichoceros,Dinoflagellate,Tripos (Tripoceratium),trichoceros,842517,0,1
