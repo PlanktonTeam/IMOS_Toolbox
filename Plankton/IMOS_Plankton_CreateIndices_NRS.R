@@ -28,10 +28,8 @@ outD <- "Output"
 # ensure we have all trips accounted for 
 # note there are circumstances where a trip won't have a phyto and a zoo samples due to loss of sample etc.
 
-NRSdat <- get_NRSTrips() %>% #ignore warning, 'fast' method does better here than 'accurate'
-  select(-SampleDepth_m) %>% 
-  distinct()
-
+NRSdat <- getNRSSamples() #ignore warning, 'fast' method does better here than 'accurate'
+  
 dNRSdat <- distinct(NRSdat, NRScode, .keep_all = TRUE) %>%  # Distinct rows for satellite, should be anyway
   rename(Date = SampleDateLocal) %>% 
   select(NRScode, Date, Latitude, Longitude)
@@ -60,7 +58,6 @@ MLD <- data.frame(NRScode = NA, MLD_temp = as.numeric(NA), MLD_sal = as.numeric(
 for (i in 1:n) {
   dat <- CTD_MLD %>% select(NRScode) %>% unique() %>% mutate(NRScode = as.factor(NRScode)) 
   nrscode <- dat$NRScode[[i]] %>% droplevels()
-  nrscode <- 	"NRSROT20100924"
   mldData <- CTD_MLD %>% filter(NRScode == nrscode) %>% arrange(SampleDepth_m)
     
   if (as.character(substr(nrscode, 0,3)) %in% c("DAR", "YON")){
@@ -135,25 +132,24 @@ for (i in 1:n) {
 
 Nuts <- getChemistry() %>% 
   group_by(NRScode) %>% 
-  summarise(Silicate_umol_L = mean(Silicate_umol_L, na.rm = TRUE),
-            Phosphate_umol_L = mean(Phosphate_umol_L, na.rm = TRUE),
-            Ammonium_umol_L = mean(Ammonium_umol_L, na.rm = TRUE),
-            Nitrate_umol_L = mean(Nitrate_umol_L, na.rm = TRUE),
-            Nitrite_umol_L = mean(Nitrite_umol_L, na.rm = TRUE),
-            Oxygen_umol_L = mean(Oxygen_umol_L, na.rm = TRUE),
-            TCO2_umol_kg = mean(TCO2_umol_kg, na.rm = TRUE),
-            TAlkalinity_umol_kg = mean(TAlkalinity_umol_kg, na.rm = TRUE),
-            Salinity_psu = mean(Salinity, na.rm = TRUE),
+  summarise(Silicate_umolL = mean(Silicate_umolL, na.rm = TRUE),
+            Phosphate_umolL = mean(Phosphate_umolL, na.rm = TRUE),
+            Ammonium_umolL = mean(Ammonium_umolL, na.rm = TRUE),
+            Nitrate_umolL = mean(Nitrate_umolL, na.rm = TRUE),
+            Nitrite_umolL = mean(Nitrite_umolL, na.rm = TRUE),
+            Oxygen_umolL = mean(Oxygen_umolL, na.rm = TRUE),
+            TCO2_umolkg = mean(TCO2_umolkg, na.rm = TRUE),
+            TAlkalinity_umolkg = mean(TAlkalinity_umolkg, na.rm = TRUE),
+            Salinity_PSU = mean(Salinity_PSU, na.rm = TRUE),
             .groups = "drop") %>% 
   mutate_all(~ replace(., is.na(.), NA)) %>% 
   untibble()
 
-Pigments <- read_csv(paste0(rawD,.Platform$file.sep,"nrs_pigments.csv"), na = "(null)") %>% 
-  select(NRS_TRIP_CODE, SAMPLE_DEPTH_M, DV_CPHL_A_AND_CPHL_A) %>% 
-  rename(NRScode = NRS_TRIP_CODE, SampleDepth_m = SAMPLE_DEPTH_M, Chla = DV_CPHL_A_AND_CPHL_A) %>%
+Pigments <- read_csv(paste0(rawD,.Platform$file.sep,"NRS_Pigments.csv"), na = "(null)") %>% 
+  select(TRIP_CODE, SAMPLEDEPTH_M, DV_CPHL_A_AND_CPHL_A) %>% 
+  rename(NRScode = TRIP_CODE, SampleDepth_m = SAMPLEDEPTH_M, Chla = DV_CPHL_A_AND_CPHL_A) %>%
   filter(SampleDepth_m <= 25) %>% # take average of top 10m as a surface value for SST and CHL
   # filter(SampleDepth_m == "WC") %>% 
-  mutate(NRScode = str_replace(NRScode, "NRS", "")) %>% 
   group_by(NRScode) %>% 
   summarise(Chla_mgm3 = mean(Chla, na.rm = TRUE),
             .groups = "drop") %>%
@@ -178,10 +174,6 @@ TCope <- ZooData %>%
   group_by(NRScode, ) %>% 
   summarise(CopeAbundance_m3 = sum(ZAbund_m3, na.rm = TRUE),
             .groups = "drop")
-
-# Total Zooplankton Biomass
-ZBiomass <- getNRSSamples() %>% select(c(NRScode, Biomass_mgm3)) %>% 
-  mutate(SampleDepth_m = "WC")
 
 # Bring in copepod information table with sizes etc.
 ZInfo <- get_ZooInfo() 
@@ -348,7 +340,6 @@ DinoEven <- NDino %>%
 Indices <- NRSdat  %>%
   left_join(TZoo, by = ("NRScode")) %>%
   left_join(TCope, by = ("NRScode")) %>%
-  left_join(ZBiomass %>% select(NRScode, Biomass_mgm3), by = ("NRScode")) %>%
   left_join(ACopeSize, by = ("NRScode")) %>%
   left_join(HCrat %>% select(-c('CO', 'CC')), ("NRScode")) %>%
   left_join(CopepodEvenness,  by = ("NRScode")) %>%
