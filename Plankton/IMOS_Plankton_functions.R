@@ -151,7 +151,7 @@ getCTD <- function(){
                                                                    ifelse(site_code == 'NRSKAI', 'Kangaroo Island',
                                                                                ifelse(site_code == 'NRSESP', 'Esperance',
                                                                                            ifelse(site_code == 'NRSROT', 'Rottnest Island', 'Ningaloo')))))))),
-             CPHL = ifelse(!is.na(CPHL), CPHL, CHLU)) %>%
+             CPHL = ifelse(!is.na(CPHL), CPHL, CHLF)) %>%
       rename(CastTime_UTC = time_coverage_start, Latitude = LATITUDE, Longitude = LONGITUDE, Depth_m = DEPTH, Salinity_psu = PSAL,
              Salinity_flag = PSAL_quality_control, Temperature_degC = TEMP, Temperature_flag = TEMP_quality_control, DissolvedOxygen_umolkg = DOX2,
              DissolvedOxygen_flag = DOX2_quality_control, Chla_mgm3 = CPHL, Chla_flag = CPHL_quality_control, Turbidity_NTU = TURB, 
