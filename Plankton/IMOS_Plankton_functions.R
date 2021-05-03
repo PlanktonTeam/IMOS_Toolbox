@@ -133,15 +133,10 @@ getChemistry <- function(){
 # Bring in picoplankton data
 getPico <- function(){
   Pico <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/NRS_Picoplankton.csv", na = "(null)") %>%
-  rename(NRScode = TRIP_CODE, SampleDepth_m = SAMPLEDEPTH_M, Replicate = REPLICATE, 
+  rename(NRScode = TRIP_CODE, SampleDepth_m = SAMPLEDEPTH_M, Replicate = REPLICATE, SampleDate_Local = SAMPLE_DATE_LOCAL,
          Prochlorococcus_CellsmL = PROCHLOROCOCCUS_CELLSML, Prochlorococcus_Flag = PROCHLOROCOCCUS_FLAG,
          Synecochoccus_CellsmL = SYNECOCHOCCUS_CELLSML, Synecochoccus_Flag = SYNECOCHOCCUS_FLAG, 
-         Picoeukaryotes_CellsmL = PICOEUKARYOTES_CELLSML, Picoeukaryotes_Flag = PICOEUKARYOTES_FLAG) %>%
-  group_by(NRScode, SampleDepth_m) %>%
-  summarise(Prochlorococcus_CellsmL = mean(Prochlorococcus_CellsmL, na.rm = TRUE), 
-            Synecochoccus_CellsmL  = mean(Synecochoccus_CellsmL, na.rm = TRUE),
-            Picoeukaryotes_CellsmL  = mean(Picoeukaryotes_CellsmL, na.rm = TRUE),
-            .groups = "drop")
+         Picoeukaryotes_CellsmL = PICOEUKARYOTES_CELLSML, Picoeukaryotes_Flag = PICOEUKARYOTES_FLAG) 
   return(Pico)
   }
 # get CTD data
