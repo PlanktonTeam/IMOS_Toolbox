@@ -529,7 +529,8 @@ nrsclc <- NRSZcl %>%
 
 NRSCop1 <- NRSZdat %>% 
   filter(!TaxonName %in% levels(as.factor(nrsclc$TaxonName)) & Copepod =="COPEPOD"
-         & Species != "spp." & !is.na(Species) & !grepl("cf.", Species) & !grepl("grp", Species)) %>% 
+         & Species != "spp." & !is.na(Species) & !grepl("cf.", Species)  & 
+           !grepl("/", Species) & !grepl("grp", Species)) %>% 
   mutate(Species = paste0(Genus," ", word(Species,1))) %>% # bin complexes
   group_by(Sample, Species) %>% 
   summarise(ZAbund_m3 = sum(ZAbund_m3, na.rm = TRUE), .groups = "drop")
@@ -546,7 +547,8 @@ NRSCop1 <- NRSSamp %>% filter(grepl('Z', SampleType)) %>%
 # add change log species with -999 for NA"s and real absences as 0"s
 NRSCop2 <- NRSZdat %>% 
   filter(TaxonName %in% levels(as.factor(nrsclc$TaxonName)) & Copepod =="COPEPOD"
-         & Species != "spp." & !is.na(Species) & !grepl("cf.", Species) & !grepl("grp", Species)) %>% 
+         & Species != "spp." & !is.na(Species)  & 
+           !grepl("/", Species) & !grepl("cf.", Species) & !grepl("grp", Species)) %>% 
   mutate(Species = paste0(Genus," ", word(Species,1))) %>% # bin complexes
   left_join(NRSZcl, by = "TaxonName") %>%
   mutate(Species = as_factor(Species)) %>% 

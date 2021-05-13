@@ -1,374 +1,374 @@
-TAXON_NAME,START_DATE,PARENT_NAME
-Clausocalanus paululus f,2009-10-12 00:00:00,Clausocalanus spp. f
-Clausocalanus brevipes f,2008-09-29 00:00:00,Clausocalanus spp. f
-Clausocalanus ingens f,2009-10-12 00:00:00,Clausocalanus spp. f
-Clausocalanus pergens f,2009-10-12 00:00:00,Clausocalanus spp. f
-Clausocalanus jobei f (>1.2mm),2009-10-12 00:00:00,Clausocalanus spp. f
-Clausocalanus parapergens f,2009-10-12 00:00:00,Clausocalanus spp. f
-Clausocalanus minor f,2009-10-12 00:00:00,Clausocalanus spp. f
-Clausocalanus furcatus f,2008-09-29 00:00:00,Clausocalanus spp. f
-Clausocalanus mastigophorus f,2009-10-12 00:00:00,Clausocalanus spp. f
-Clausocalanus laticeps f,2008-09-29 00:00:00,Clausocalanus spp. f
-Clausocalanus farrani f (<1.00mm),2009-10-12 00:00:00,Clausocalanus spp. f
-Clausocalanus farrani/jobei f (1.00mm>x<1.2mm),2009-10-12 00:00:00,Clausocalanus spp. f
-Clausocalanus brevipes,2008-09-29 00:00:00,Clausocalanus spp. f
-Clausocalanus lividus f,2009-10-12 00:00:00,Clausocalanus spp. f
-Acrocalanus spp. j,2008-09-29 00:00:00,Calanoid j
-Ctenocalanus spp. j,2008-09-29 00:00:00,Calanoid j
-Urocorycaeus longistylis f,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus giesbrechti f,2010-01-12 00:00:00,Corycaeus spp.
-Urocorycaeus furcifer m,2010-01-12 00:00:00,Corycaeus spp.
-Farranula carinata f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus dahli m,2010-01-12 00:00:00,Corycaeus spp.
-Corycaeus spp. m,2010-01-12 00:00:00,Corycaeus spp.
-Corycaeus spp.,2010-01-12 00:00:00,Corycaeus spp.
-Farranula spp. f,2008-09-29 00:00:00,Corycaeus spp.
-Farranula spp. m,2008-09-29 00:00:00,Corycaeus spp.
-Corycaeidae j,2008-09-29 00:00:00,Corycaeus spp.
-Corycaeus spp. f,2010-01-12 00:00:00,Corycaeus spp.
-Agetus spp. f,2010-01-12 00:00:00,Corycaeus spp.
-Urocorycaeus longistylis m,2010-01-12 00:00:00,Corycaeus spp.
-Corycaeus speciosus m,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus catus m,2010-01-12 00:00:00,Corycaeus spp.
-Corycaeus speciosus f,2010-01-12 00:00:00,Corycaeus spp.
-Urocorycaeus lautus m,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus andrewsi m,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus latus f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus tenuis f,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus spp. m,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus anglicus m,2010-01-12 00:00:00,Corycaeus spp.
-Agetus limbatus f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus spp. m,2010-01-12 00:00:00,Corycaeus spp.
-Farranula spp.,2008-09-29 00:00:00,Corycaeus spp.
-Onychocorycaeus spp. f,2010-01-12 00:00:00,Corycaeus spp.
-Farranula spp. j,2008-09-29 00:00:00,Corycaeus spp.
-Farranula gracilis f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus erythraeus m,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus latus m,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus agilis f,2010-01-12 00:00:00,Corycaeus spp.
-Farranula curta f,2010-01-12 00:00:00,Corycaeus spp.
-Agetus typicus f,2010-01-12 00:00:00,Corycaeus spp.
-Corycaeus clausi f,2010-01-12 00:00:00,Corycaeus spp.
-Corycaeus clausi m,2010-01-12 00:00:00,Corycaeus spp.
-Agetus limbatus m,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus spp. f,2010-01-12 00:00:00,Corycaeus spp.
-Urocorycaeus furcifer f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus erythraeus f,2010-01-12 00:00:00,Corycaeus spp.
-Farranula gibbula f,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus agilis m,2010-01-12 00:00:00,Corycaeus spp.
-Farranula concinna f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus dahli f,2010-01-12 00:00:00,Corycaeus spp.
-Agetus flaccus m,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus aucklandicus f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus aucklandicus m,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus pacificus f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus anglicus f,2010-01-12 00:00:00,Corycaeus spp.
-Urocorycaeus lautus f,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus pumilus m,2010-01-12 00:00:00,Corycaeus spp.
-Agetus spp. m,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus lubbocki f,2010-01-12 00:00:00,Corycaeus spp.
-Corycaeus vitreus f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus asiaticus f,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus catus f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus subtilis f,2010-01-12 00:00:00,Corycaeus spp.
-Agetus typicus m,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus andrewsi f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus subtilis m,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus ovalis m,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus pacificus m,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus pumilus f,2010-01-12 00:00:00,Corycaeus spp.
-Corycaeus crassiusculus f,2010-01-12 00:00:00,Corycaeus spp.
-Corycaeus crassiusculus m,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus ovalis f,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus asiaticus m,2010-01-12 00:00:00,Corycaeus spp.
-Farranula rostrata f,2010-01-12 00:00:00,Corycaeus spp.
-Monocorycaeus robustus f,2010-01-12 00:00:00,Corycaeus spp.
-Agetus flaccus f,2010-01-12 00:00:00,Corycaeus spp.
-Onychocorycaeus giesbrechti m,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus minimus f,2010-01-12 00:00:00,Corycaeus spp.
-Agetus spp. j,2010-01-12 00:00:00,Corycaeus spp.
-Corycaeus vitreus m,2010-01-12 00:00:00,Corycaeus spp.
-Ditrichocorycaeus minimus m,2013-03-22 10:05:12,Corycaeus spp.
-Corycaeidae m,2008-09-29 00:00:00,Corycaeus spp.
-Corycaeidae f,2008-09-29 00:00:00,Corycaeus spp.
-Ditrichocorycaeus spp.,2010-01-12 00:00:00,Corycaeus spp.
-Undinula vulgaris CIV,2008-09-29 00:00:00,Calanid CIV
-Neocalanus tonsus CIV,2008-09-29 00:00:00,Calanid CIV
-Calanus australis CIV,2008-09-29 00:00:00,Calanid CIV
-Neocalanus spp. CV,2008-09-29 00:00:00,Calanid CV
-Undinula vulgaris CV,2008-09-29 00:00:00,Calanid CV
-Calanoides spp. CV,2008-09-29 00:00:00,Calanid CV
-Calanus australis CV,2008-09-29 00:00:00,Calanid CV
-Calanus simillimus CV,2008-09-29 00:00:00,Calanid CV
-Rhincalanus gigas CIV-CV,2008-09-29 00:00:00,Calanid CV
-Large copepodite CV,2008-09-29 00:00:00,Calanid CV
-Canthocalanus pauper CV,2008-09-29 00:00:00,Calanid CV
-Nannocalanus minor CV,2008-09-29 00:00:00,Calanid CV
-Mesocalanus spp. CV,2008-09-29 00:00:00,Calanid CV
-Neocalanus gracilis CV,2008-09-29 00:00:00,Calanid CV
-Neocalanus tonsus CV,2008-09-29 00:00:00,Calanid CV
-Oithona simplex f,2011-07-08 00:00:00,Oithona Grp4 (round head) f
-Paroithona spp. f,2011-07-08 00:00:00,Oithona Grp4 (round head) f
-Cyllopus lucasii,2008-09-29 00:00:00,Amphipod
-Undinula vulgaris CIII,2008-09-29 00:00:00,Calanid CII
-Undinula vulgaris CII,2008-09-29 00:00:00,Calanid CII
-Calocalanus styliremis f,2008-09-29 00:00:00,Calocalanus spp. f
-Calocalanus cf. minutus f,2008-09-29 00:00:00,Calocalanus spp. f
-Calocalanus cf. pavoninus f,2008-09-29 00:00:00,Calocalanus spp. f
-Calocalanus cf. styliremis f,2008-09-29 00:00:00,Calocalanus spp. f
-Calocalanus contractus f,2008-09-29 00:00:00,Calocalanus spp. f
-Calocalanus contractus m,2008-09-29 00:00:00,Calocalanus spp. f
-Calocalanus tenuis f,2008-09-29 00:00:00,Calocalanus spp. f
-Nauplii calanoid (Rhincalanus?),2008-09-29 00:00:00,Nauplii calanoid
-Nauplii Rhincalanus gigas,2008-09-29 00:00:00,Nauplii calanoid
-Oithona decipiens/similis f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f
-Oithona nana f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f
-Oithona similis f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f
-Oithona brevicornis f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f
-Oithona similis m,2011-07-08 00:00:00,Oithona Grp1 (flat head) f
-Oithona similis,2011-07-08 00:00:00,Oithona Grp1 (flat head) f
-Oithona decipiens f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f
-Oithona fallax f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f
-Oithona atlantica f,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f
-Oithona plumifera f,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f
-Oithona longispina f,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f
-Oithona setigera f,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f
-Oithona tenuis f,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f
-Oithona plumifera j,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f
-Oithona attenuata typical f,2011-07-08 00:00:00,Oithona Grp2 (diamond) f
-Oithona australis f,2011-07-08 00:00:00,Oithona Grp2 (diamond) f
-Oithona attenuata stocky f,2011-07-08 00:00:00,Oithona Grp2 (diamond) f
-Oithona attenuata f,2011-07-08 00:00:00,Oithona Grp2 (diamond) f
-Oncaea scottodicarloi f,2010-09-23 00:00:00,Oncaea media complex f
-Oncaea waldemari f,2010-09-23 00:00:00,Oncaea media complex f
-Oncaea tregoubovi f,2010-09-23 00:00:00,Oncaea media complex f
-Oncaea media f,2010-09-23 00:00:00,Oncaea media complex f
-Oncaea mediterranea slender f,2010-09-23 00:00:00,Oncaea mediterranea complex f
-Oncaea mediterranea broad f,2010-09-23 00:00:00,Oncaea mediterranea complex f
-Oncaea venusta medium hump f,2010-09-23 00:00:00,Oncaea venusta complex f
-Oncaea venusta medium no hump f,2010-09-23 00:00:00,Oncaea venusta complex f
-Oncaea venusta venella hump f,2010-09-23 00:00:00,Oncaea venusta complex f
-Oncaea venusta typica f,2010-09-23 00:00:00,Oncaea venusta complex f
-Oncaea venusta venella f,2010-09-23 00:00:00,Oncaea venusta complex f
-Oncaea venusta medium f,2010-09-23 00:00:00,Oncaea venusta complex f
-Oncaea venusta venella no hump f,2010-09-23 00:00:00,Oncaea venusta complex f
-Oncaea venusta typica m,2010-09-23 00:00:00,Oncaea venusta complex f
-Paracalanus indicus i,2010-09-16 00:00:00,Paracalanus spp. j
-Paracalanus spp. i,2010-09-16 00:00:00,Paracalanus spp. j
-Rhincalanus cornutus j,2008-09-29 00:00:00,Rhincalanidae j
-Temora turbinata j,2008-09-29 00:00:00,Temora spp. j
-Vibilia armata,2008-09-29 00:00:00,Hyperiid amphipod
-Vibilia spp.,2008-09-29 00:00:00,Hyperiid amphipod
-Hyperiella spp.,2008-09-29 00:00:00,Hyperiid amphipod
-Hyperiella antarctica,2008-09-29 00:00:00,Hyperiid amphipod
-Hyperiella dilatata,2008-09-29 00:00:00,Hyperiid amphipod
-Primno macropa,2008-09-29 00:00:00,Hyperiid amphipod
-Scina spp.,2008-09-29 00:00:00,Hyperiid amphipod
-Themisto gaudichaudii,2008-09-29 00:00:00,Hyperiid amphipod
-Hyperia spp.,2008-09-29 00:00:00,Hyperiid amphipod
-Phronima spp.,2008-09-29 00:00:00,Hyperiid amphipod
-Vibilia antarctica,2008-09-29 00:00:00,Hyperiid amphipod
-Primno spp.,2012-05-08 09:06:13,Hyperiid amphipod
-Oxycephalidae,2012-08-28 11:54:38,Hyperiid amphipod
-Lycaea pachypoda f,2014-11-27 11:35:40,Hyperiid amphipod
-Lycaea pachypoda m,2014-11-27 11:36:25,Hyperiid amphipod
-Lycaeopsidae,2013-12-20 14:22:26,Hyperiid amphipod
-Flaccisagitta spp.,2010-09-30 00:00:00,Chaetognatha
-Flaccisagitta enflata,2010-09-23 00:00:00,Chaetognatha
-Serratosagitta tasmanica,2010-09-23 00:00:00,Chaetognatha
-Aidanosagitta neglecta,2010-09-23 00:00:00,Chaetognatha
-Aidanosagitta regularis,2010-09-23 00:00:00,Chaetognatha
-Sagitta bipunctata,2010-09-23 00:00:00,Chaetognatha
-Solidosagitta marri,2010-09-23 00:00:00,Chaetognatha
-Sagittidae,2010-09-23 00:00:00,Chaetognatha
-Pseudosagitta gazellae,2010-09-23 00:00:00,Chaetognatha
-Serratosagitta bierii,2010-09-23 00:00:00,Chaetognatha
-Parasagitta spp.,2010-09-23 00:00:00,Chaetognatha
-Zonosagitta pulchra,2010-09-23 00:00:00,Chaetognatha
-Eukrohnia hamata,2010-09-23 00:00:00,Chaetognatha
-Pterosagitta draco,2010-09-23 00:00:00,Chaetognatha
-Mesosagitta minima,2010-09-23 00:00:00,Chaetognatha
-Penaeidae larvae,2015-11-01 00:00:00,Decapod larvae
-Auricularia spp. larvae,2015-11-01 00:00:00,Decapod larvae
-Brachiolaria larvae,2015-11-01 00:00:00,Decapod larvae
-Jasus edwardsii,2014-09-04 12:56:53,Decapod larvae
-Anomura megalopa larvae,2015-11-01 00:00:00,Decapod larvae
-Dromiidae larvae,2015-11-01 00:00:00,Decapod larvae
-Caridea megalopa larvae,2015-11-11 19:19:49,Decapod larvae
-Protozoea decapod larvae,2015-11-01 00:00:00,Decapod larvae
-Gebiidea zoea,2015-11-01 00:00:00,Decapod larvae
-Callianassidae zoea,2015-11-01 00:00:00,Decapod larvae
-Dendrobranchiata larvae,2015-11-01 00:00:00,Decapod larvae
-Astacidea zoea,2015-11-01 00:00:00,Decapod larvae
-Doliolum denticulatum,2010-01-14 00:00:00,Doliolum spp.
-Doliolum nationalis,2010-01-14 00:00:00,Doliolum spp.
-Dolioletta spp.,2011-07-01 00:00:00,Doliolum spp.
-Pentacrinoid larvae,2008-09-29 00:00:00,Echinoderm larvae
-Ophiurida larvae,2011-02-24 00:00:00,Echinoderm larvae
-Ophiuroidea,2014-12-02 15:10:18,Echinoderm larvae
-Pluteus larva,2014-10-30 12:43:17,Echinoderm larvae
-Echinospira larva,2014-10-27 14:26:51,Echinoderm larvae
-Holothurian auricularia larva,2014-12-18 08:37:31,Echinoderm larvae
-Bipinnaria larva,2015-03-06 11:34:43,Echinoderm larvae
-Holothurian doliolaria larva,2014-12-18 08:38:49,Echinoderm larvae
-Ophiopluteus,2015-11-01 00:00:00,Echinoderm larvae
-Echinopluteus,2015-11-01 00:00:00,Echinoderm larvae
-Evadne nordmanni f,2010-03-24 00:00:00,Evadne nordmanni
-Evadne nordmanni m,2010-03-24 00:00:00,Evadne nordmanni
-Evadne nordmanni f gravid,2010-03-24 00:00:00,Evadne nordmanni
-Evadne spinifera f gravid,2010-03-24 00:00:00,Evadne spinifera
-Evadne spinifera f,2010-03-24 00:00:00,Evadne spinifera
-Evadne spinifera m,2010-03-24 00:00:00,Evadne spinifera
-Protomyctophum spp.,2008-09-29 00:00:00,Fish larvae
-Fritillaria pellucida,2011-07-01 00:00:00,Fritillariidae
-Fritillaria borealis sargassi,2011-07-01 00:00:00,Fritillariidae
-Fritillaria borealis,2011-07-01 00:00:00,Fritillariidae
-Fritillaria haplostoma,2011-07-01 00:00:00,Fritillariidae
-Fritillaria formica,2011-07-01 00:00:00,Fritillariidae
-Prosobranch,2010-01-01 00:00:00,Gastropod
-Limacina,2010-01-01 00:00:00,Gastropod
-Spongiobranchaea australis,2008-09-29 00:00:00,Gastropod
-Lucifer typus f,2010-06-17 00:00:00,Lucifer spp.
-Lucifer spp. m,2010-06-17 00:00:00,Lucifer spp.
-Lucifer typus,2010-06-17 00:00:00,Lucifer spp.
-Lucifer typus m,2010-06-17 00:00:00,Lucifer spp.
-Lucifer spp. f,2010-06-18 00:00:00,Lucifer spp.
-Lucifer spp. mysis,2010-06-17 00:00:00,Lucifer spp.
-Lucifer spp. protozoea,2010-06-17 00:00:00,Lucifer spp.
-Anthomedusae,2010-01-11 00:00:00,Medusa
-Cnidarian larvae,2008-09-29 00:00:00,Medusa
-Cubozoan larvae,2008-09-29 00:00:00,Medusa
-Hydromedusae,2010-01-11 00:00:00,Medusa
-Trachymedusae,2010-01-11 00:00:00,Medusa
-Leptothecata,2010-01-11 00:00:00,Medusa
-Aglaura hemistoma,2011-07-01 00:00:00,Medusa
-Bassia bassensis,2010-09-14 00:00:00,Medusa
-Liriope tetraphylla,2011-07-01 00:00:00,Medusa
-Coelenterata larvae,2008-09-29 00:00:00,Medusa
-Narcomedusae,2010-01-11 00:00:00,Medusa
-Solmundella bitentaculata,2008-09-29 00:00:00,Medusa
-Amphinema spp.,2011-07-01 00:00:00,Medusa
-Clytia spp.,2011-07-01 00:00:00,Medusa
-Leptomedusae,2010-01-11 00:00:00,Medusa
-Bougainvillia spp.,2011-07-01 00:00:00,Medusa
-Brachyuran megalopa,2008-09-29 00:00:00,Megalope
-Oikopleura (Vexillaria) dioica,2011-07-01 00:00:00,Oikopleuridae
-Oikopleura (Coecaria) spp.,2011-07-01 00:00:00,Oikopleuridae
-Ostracod gravid,2012-10-15 17:26:18,Ostracod
-Euconchoecia spp.,2014-02-14 10:38:50,Ostracod
-Conchoecia spp.,2014-03-24 11:34:58,Ostracod
-Cypridina spp.,2014-05-12 11:16:26,Ostracod
-Euconchoecia aculeata,2015-11-01 00:00:00,Ostracod
-Penilia avirostris f,2010-03-24 00:00:00,Penilia avirostris
-Penilia avirostris f gravid,2010-03-24 00:00:00,Penilia avirostris
-Penilia avirostris m,2010-03-24 00:00:00,Penilia avirostris
-Podon spp. f,2010-03-24 00:00:00,Podon spp.
-Podon intermedius,2010-03-24 00:00:00,Podon spp.
-Podon intermedius f gravid,2010-03-24 00:00:00,Podon spp.
-Podon intermedius f,2010-03-24 00:00:00,Podon spp.
-Podon intermedius m,2010-03-24 00:00:00,Podon spp.
-Travisiopsis spp.,2013-01-01 00:00:00,Polychaete
-Pseudevadne tergestina f,2010-03-24 00:00:00,Pseudevadne tergestina
-Pseudevadne tergestina m,2010-03-24 00:00:00,Pseudevadne tergestina
-Pseudevadne tergestina f gravid,2010-03-24 00:00:00,Pseudevadne tergestina
-Pegea confoederata,2010-02-05 00:00:00,Salpidae
-Ihlea magalhanica solitary,2008-09-29 00:00:00,Salpidae
-Soestia zonaria agg,2011-07-01 00:00:00,Salpidae
-Salpidae sol,2013-07-24 17:43:06,Salpidae
-Salpa fusiformis,2008-09-29 00:00:00,Salpidae
-Siphonophore abylidae,2010-09-14 00:00:00,Siphonophore
-Calycophoran,2010-09-14 00:00:00,Siphonophore
-Lensia subtilis,2010-09-14 00:00:00,Siphonophore
-Physonectae,2010-09-14 00:00:00,Siphonophore
-Lensia subtiloides,2010-09-14 00:00:00,Siphonophore
-Ceratocymba spp.,2011-07-01 00:00:00,Siphonophore
-Abylidae,2010-09-14 00:00:00,Siphonophore
-Siphonophore diphyidae,2010-09-14 00:00:00,Siphonophore
-Dimophyes arctica,2011-07-01 00:00:00,Siphonophore
-Diphyes chamissonis,2010-09-14 00:00:00,Siphonophore
-Diphyes dispar,2011-07-01 00:00:00,Siphonophore
-Chelophyes appendiculata,2010-09-14 00:00:00,Siphonophore
-Chelophyes contorta,2011-07-01 00:00:00,Siphonophore
-Eudoxoides mitra,2011-07-01 00:00:00,Siphonophore
-Eudoxoides spiralis,2010-09-14 00:00:00,Siphonophore
-Abylopsis spp.,2011-07-01 00:00:00,Siphonophore
-Lensia spp.,2010-09-14 00:00:00,Siphonophore
-Abylopsis eschscholtzii,2010-09-14 00:00:00,Siphonophore
-Gonophores unid,2011-07-01 00:00:00,Siphonophore
-Lensia multicristata,2010-09-14 00:00:00,Siphonophore
-Nanomia spp.,2010-09-14 00:00:00,Siphonophore
-Eudoxoides spp.,2010-09-14 00:00:00,Siphonophore
-Chelophyes spp.,2011-07-01 00:00:00,Sipunculid worm larvae
-Pelagosphera larvae,2014-09-25 12:12:55,Sipunculid worm larvae
-Limacina helicina,2008-09-29 00:00:00,Limacina
-Limacina retroversa,2008-09-29 00:00:00,Limacina
-Clio pyramidata,2008-09-29 00:00:00,Cavoliniidae
-Clione antarctica,2008-09-29 00:00:00,Cavoliniidae
-Clio spp.,2008-09-29 00:00:00,Cavoliniidae
-Creseis spp.,2008-09-29 00:00:00,Cavoliniidae
-Clausocalanus spp. i,2010-09-16 00:00:00,Clausocalanus spp. j
-Clausocalanus furcatus m,2008-09-29 00:00:00,Clausocalanus spp. m
-Clausocalanus brevipes m,2008-09-29 00:00:00,Clausocalanus spp. m
-Clausocalanus ingens m,2009-10-12 00:00:00,Clausocalanus spp. m
-Thalia democratica sol,2010-01-11 00:00:00,Thalia democratica
-Thalia democratica agg,2010-01-11 00:00:00,Thalia democratica
-Oithona Grp6 (square head) f,2010-10-20 00:00:00,Oithona spp. f
-Oithona Grp5 (orange furcae) f,2010-10-20 00:00:00,Oithona spp. f
-Oithona frigida m,2011-07-08 00:00:00,Oithona spp. small m
-Oithona simplex m,2011-07-08 00:00:00,Oithona spp. small m
-Dioithona rigida m,2011-07-08 00:00:00,Oithona spp. small m
-Triconia spp. f,2010-09-23 00:00:00,Oncaea spp. f
-Triconia elongata f,2010-09-23 00:00:00,Oncaea spp. f
-Triconia redacta f,2010-09-23 00:00:00,Oncaea spp. f
-Triconia umerus f,2010-09-23 00:00:00,Oncaea spp. f
-Triconia conifera complex f,2010-09-23 00:00:00,Oncaea spp. f
-Triconia dentipes complex f,2010-09-23 00:00:00,Oncaea spp. f
-Oncaea zernovi complex f,2010-09-23 00:00:00,Oncaea spp. f
-Triconia dentipes f,2010-09-23 00:00:00,Oncaea spp. f
-Triconia spp. m,2010-09-23 00:00:00,Oncaea spp. f
-Oncaea vodjanitskii complex f,2010-09-23 00:00:00,Oncaea spp. f
-Triconia dentipes complex m,2010-09-23 00:00:00,Oncaea spp. f
-Triconia denticula f,2010-09-23 00:00:00,Oncaea spp. f
-Oncaea clevei complex m,2008-09-29 00:00:00,Oncaea spp. m
-Oncaea media complex m,2008-09-29 00:00:00,Oncaea spp. m
-Oncaea mediterranea complex m,2008-09-29 00:00:00,Oncaea spp. m
-Oncaea venusta complex m,2008-09-29 00:00:00,Oncaea spp. m
-Oncaea zernovi complex m,2010-09-23 00:00:00,Oncaea spp. m
-Triconia conifera complex m,2010-09-23 00:00:00,Oncaea spp. m
-Oncaea venusta medium m,2010-09-23 00:00:00,Oncaea spp. m
-Oncaea media m,2010-09-23 00:00:00,Oncaea spp. m
-Oncaea spp. m <0.4mm,2015-05-01 00:00:00,Oncaea spp. m
-Oncaea spp. m 0.4<>0.7mm,2015-05-01 00:00:00,Oncaea spp. m
-Oncaea spp. m >0.7mm,2015-05-01 00:00:00,Oncaea spp. m
-Dioithona rigida f,2011-07-08 00:00:00,Oithona Grp5 (orange furcae) f
-Dioithona oculata f,2011-07-08 00:00:00,Oithona Grp5 (orange furcae) f
-Cladoceran f,2010-03-24 00:00:00,Cladoceran
-Cladoceran f gravid,2010-03-24 00:00:00,Cladoceran
-Pleopis polyphemoides,2010-03-24 00:00:00,Cladoceran
-Lipmanella dictyoceras,2015-03-06 11:30:33,Radiozoa
-Oncaea clevei f,2010-09-23 00:00:00,Oncaea clevei complex f
-Oncaea paraclevei f,2010-09-23 00:00:00,Oncaea clevei complex f
-Plastic blue strand,2015-08-24 00:00:00,Plastic (NRS)
-Plastic red strand,2015-08-24 00:00:00,Plastic (NRS)
-Plastic yellow strand,2015-08-24 00:00:00,Plastic (NRS)
-Plastic green strand,2015-08-24 00:00:00,Plastic (NRS)
-Plastic clear strand,2015-08-24 00:00:00,Plastic (NRS)
-Plastic black strand,2015-08-24 00:00:00,Plastic (NRS)
-Plastic blue bead,2015-08-24 00:00:00,Plastic (NRS)
-Plastic red bead,2015-08-24 00:00:00,Plastic (NRS)
-Plastic yellow bead,2015-08-24 00:00:00,Plastic (NRS)
-Plastic green bead,2015-08-24 00:00:00,Plastic (NRS)
-Plastic clear bead,2015-08-24 00:00:00,Plastic (NRS)
-Plastic black bead,2015-08-24 00:00:00,Plastic (NRS)
-Plastic blue flake,2015-08-24 00:00:00,Plastic (NRS)
-Plastic red flake,2015-08-24 00:00:00,Plastic (NRS)
-Plastic yellow flake,2015-08-24 00:00:00,Plastic (NRS)
-Plastic green flake,2015-08-24 00:00:00,Plastic (NRS)
-Plastic clear flake,2015-08-24 00:00:00,Plastic (NRS)
-Plastic black flake,2015-08-24 00:00:00,Plastic (NRS)
-Plastic other,2015-08-24 00:00:00,Plastic (NRS)
-Acrocalanus spp. i,2010-09-16 00:00:00,Acrocalanus spp. j
-Pilidium larvae,2008-09-29 00:00:00,Nematoda
-Cymbaloporetta spp.,2016-04-14 15:05:32,Foraminifera
-Lingula spp. larvae,2008-09-29 00:00:00,Brachiopoda
-Parvocalanus crassirostris i,2010-09-16 00:00:00,Parvocalanus spp. j
+TAXON_NAME,START_DATE,PARENT_NAME,TRAINING,COMMENTS
+Clausocalanus paululus f,2009-10-12 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus brevipes f,2008-09-29 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus ingens f,2009-10-12 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus pergens f,2009-10-12 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus jobei f (>1.2mm),2009-10-12 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus parapergens f,2009-10-12 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus minor f,2009-10-12 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus furcatus f,2008-09-29 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus mastigophorus f,2009-10-12 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus laticeps f,2008-09-29 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus farrani f (<1.00mm),2009-10-12 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus farrani/jobei f (1.00mm>x<1.2mm),2009-10-12 00:00:00,Clausocalanus spp. f,Internal training,Cant separate the two species routinely so this is used when sizes overlap
+Clausocalanus brevipes,2008-09-29 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Clausocalanus lividus f,2009-10-12 00:00:00,Clausocalanus spp. f,Internal training Frost & Fleminger,
+Acrocalanus spp. j,2008-09-29 00:00:00,Calanoid j,,Not counted routinely; normally counted as calanoid j
+Ctenocalanus spp. j,2008-09-29 00:00:00,Calanoid j,,Not counted routinely; normally counted as calanoid j
+Urocorycaeus longistylis f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus giesbrechti f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Urocorycaeus furcifer m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Farranula carinata f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus dahli m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeus spp. m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeus spp.,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Farranula spp. f,2008-09-29 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Farranula spp. m,2008-09-29 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,Farranula males not routinely speciated
+Corycaeidae j,2008-09-29 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeus spp. f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Agetus spp. f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Urocorycaeus longistylis m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeus speciosus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus catus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeus speciosus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Urocorycaeus lautus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus andrewsi m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus latus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus tenuis f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus spp. m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus anglicus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Agetus limbatus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus spp. m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Farranula spp.,2008-09-29 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus spp. f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Farranula spp. j,2008-09-29 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Farranula gracilis f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus erythraeus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus latus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus agilis f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Farranula curta f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Agetus typicus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeus clausi f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeus clausi m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Agetus limbatus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus spp. f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Urocorycaeus furcifer f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus erythraeus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Farranula gibbula f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus agilis m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Farranula concinna f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus dahli f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Agetus flaccus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus aucklandicus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus aucklandicus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus pacificus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus anglicus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Urocorycaeus lautus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus pumilus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Agetus spp. m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus lubbocki f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeus vitreus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus asiaticus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus catus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus subtilis f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Agetus typicus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus andrewsi f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus subtilis m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus ovalis m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus pacificus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus pumilus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeus crassiusculus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeus crassiusculus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus ovalis f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus asiaticus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Farranula rostrata f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Monocorycaeus robustus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Agetus flaccus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Onychocorycaeus giesbrechti m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus minimus f,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Agetus spp. j,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeus vitreus m,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus minimus m,2013-03-22 10:05:12,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeidae m,2008-09-29 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Corycaeidae f,2008-09-29 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Ditrichocorycaeus spp.,2010-01-12 00:00:00,Corycaeus spp.,Internal training Dahl & Tanaka,
+Undinula vulgaris CIV,2008-09-29 00:00:00,Calanid CIV,,Not routinely counted; normally counted as Calanid CIV
+Neocalanus tonsus CIV,2008-09-29 00:00:00,Calanid CIV,,Not routinely counted; normally counted as Calanid CIV
+Calanus australis CIV,2008-09-29 00:00:00,Calanid CIV,,Not routinely counted; normally counted as Calanid CIV
+Neocalanus spp. CV,2008-09-29 00:00:00,Calanid CV,,Not routinely counted; normally counted as Calanid CV
+Undinula vulgaris CV,2008-09-29 00:00:00,Calanid CV,,Not routinely counted; normally counted as Calanid CV
+Calanoides spp. CV,2008-09-29 00:00:00,Calanid CV,,Not routinely counted; normally counted as Calanid CV; Australian species currently being reviewed by Janet Bradford-Greive 
+Calanus australis CV,2008-09-29 00:00:00,Calanid CV,,Not routinely counted; normally counted as Calanid CV
+Calanus simillimus CV,2008-09-29 00:00:00,Calanid CV,,Not routinely counted; normally counted as Calanid CV
+Rhincalanus gigas CIV-CV,2008-09-29 00:00:00,Calanid CV,,Not routinely counted; normally counted as Calanid CIV-CV
+Large copepodite CV,2008-09-29 00:00:00,Calanid CV,,
+Canthocalanus pauper CV,2008-09-29 00:00:00,Calanid CV,,Not routinely counted; normally counted as Calanid CV
+Nannocalanus minor CV,2008-09-29 00:00:00,Calanid CV,,Not routinely counted; normally counted as Calanid CV
+Mesocalanus spp. CV,2008-09-29 00:00:00,Calanid CV,,Not routinely counted; normally counted as Calanid CV
+Neocalanus gracilis CV,2008-09-29 00:00:00,Calanid CV,,Not routinely counted; normally counted as Calanid CV
+Neocalanus tonsus CV,2008-09-29 00:00:00,Calanid CV,,Not routinely counted; normally counted as Calanid CV
+Oithona simplex f,2011-07-08 00:00:00,Oithona Grp4 (round head) f,External training Dave McKinnon,
+Paroithona spp. f,2011-07-08 00:00:00,Oithona Grp4 (round head) f,External training Dave McKinnon,
+Cyllopus lucasii,2008-09-29 00:00:00,Amphipod,,Not routinely identified
+Undinula vulgaris CIII,2008-09-29 00:00:00,Calanid CII,,Not routinely counted; normally counted as Calanid CIII
+Undinula vulgaris CII,2008-09-29 00:00:00,Calanid CII,,Not routinely counted; normally counted as Calanid CII
+Calocalanus styliremis f,2008-09-29 00:00:00,Calocalanus spp. f,,Not routinely counted; normally counted as Calocalanus spp.
+Calocalanus cf. minutus f,2008-09-29 00:00:00,Calocalanus spp. f,,Not routinely counted; normally counted as Calocalanus spp.
+Calocalanus cf. pavoninus f,2008-09-29 00:00:00,Calocalanus spp. f,,Not routinely counted; normally counted as Calocalanus spp.
+Calocalanus cf. styliremis f,2008-09-29 00:00:00,Calocalanus spp. f,,Not routinely counted; normally counted as Calocalanus spp.
+Calocalanus contractus f,2008-09-29 00:00:00,Calocalanus spp. f,,Not routinely counted; normally counted as Calocalanus spp.
+Calocalanus contractus m,2008-09-29 00:00:00,Calocalanus spp. f,,Not routinely counted; normally counted as Calocalanus spp.
+Calocalanus tenuis f,2008-09-29 00:00:00,Calocalanus spp. f,,Not routinely counted; normally counted as Calocalanus spp.
+Nauplii calanoid (Rhincalanus?),2008-09-29 00:00:00,Nauplii calanoid,,Not routinely identified
+Nauplii Rhincalanus gigas,2008-09-29 00:00:00,Nauplii calanoid,,Not routinely identified
+Oithona decipiens/similis f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f,External training Dave McKinnon,Used in NRS/AusCPR as splitting them requires disection
+Oithona nana f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f,External training Dave McKinnon,
+Oithona similis f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f,External training Dave McKinnon,Used in SO where O. decipens does not occur
+Oithona brevicornis f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f,External training Dave McKinnon,
+Oithona similis m,2011-07-08 00:00:00,Oithona Grp1 (flat head) f,,Used in SO where O. decipens does not occur; Oithonidae males not routinely speciated
+Oithona similis,2011-07-08 00:00:00,Oithona Grp1 (flat head) f,,Used in SO where O. decipens does not occur
+Oithona decipiens f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f,,
+Oithona fallax f,2011-07-08 00:00:00,Oithona Grp1 (flat head) f,External training Dave McKinnon,
+Oithona atlantica f,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f,External training Dave McKinnon,Identified when larger than O. longispina and no details as per O. plumifera
+Oithona plumifera f,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f,External training Dave McKinnon,Identified when plumes or setae on gential segment are seen
+Oithona longispina f,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f,External training Dave McKinnon,Identified as larger Oithona group size 0.9<>1.1 mm
+Oithona setigera f,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f,External training Dave McKinnon,Identified as largest of the larger Oithona
+Oithona tenuis f,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f,External training Dave McKinnon,
+Oithona plumifera j,2011-07-08 00:00:00,Oithona Grp3 (pointy head) f,,
+Oithona attenuata typical f,2011-07-08 00:00:00,Oithona Grp2 (diamond) f,External training Dave McKinnon,
+Oithona australis f,2011-07-08 00:00:00,Oithona Grp2 (diamond) f,External training Dave McKinnon,
+Oithona attenuata stocky f,2011-07-08 00:00:00,Oithona Grp2 (diamond) f,External training Dave McKinnon,
+Oithona attenuata f,2011-07-08 00:00:00,Oithona Grp2 (diamond) f,External training Dave McKinnon,
+Oncaea scottodicarloi f,2010-09-23 00:00:00,Oncaea media complex f,External training Ruth Bottger Schnack,
+Oncaea waldemari f,2010-09-23 00:00:00,Oncaea media complex f,External training Ruth Bottger Schnack,
+Oncaea tregoubovi f,2010-09-23 00:00:00,Oncaea media complex f,External training Ruth Bottger Schnack,
+Oncaea media f,2010-09-23 00:00:00,Oncaea media complex f,External training Ruth Bottger Schnack,
+Oncaea mediterranea slender f,2010-09-23 00:00:00,Oncaea mediterranea complex f,External training Ruth Bottger Schnack,
+Oncaea mediterranea broad f,2010-09-23 00:00:00,Oncaea mediterranea complex f,External training Ruth Bottger Schnack,
+Oncaea venusta medium hump f,2010-09-23 00:00:00,Oncaea venusta complex f,External training Ruth Bottger Schnack,
+Oncaea venusta medium no hump f,2010-09-23 00:00:00,Oncaea venusta complex f,External training Ruth Bottger Schnack,
+Oncaea venusta venella hump f,2010-09-23 00:00:00,Oncaea venusta complex f,External training Ruth Bottger Schnack,
+Oncaea venusta typica f,2010-09-23 00:00:00,Oncaea venusta complex f,External training Ruth Bottger Schnack,
+Oncaea venusta venella f,2010-09-23 00:00:00,Oncaea venusta complex f,External training Ruth Bottger Schnack,
+Oncaea venusta medium f,2010-09-23 00:00:00,Oncaea venusta complex f,External training Ruth Bottger Schnack,
+Oncaea venusta venella no hump f,2010-09-23 00:00:00,Oncaea venusta complex f,External training Ruth Bottger Schnack,
+Oncaea venusta typica m,2010-09-23 00:00:00,Oncaea venusta complex f,External training Ruth Bottger Schnack,Oncaeidae males not routinely speciated unless found coupled or assigned to a dominant female count
+Paracalanus indicus i,2010-09-16 00:00:00,Paracalanus spp. j,Internal training,
+Paracalanus spp. i,2010-09-16 00:00:00,Paracalanus spp. j,Internal training in intersexes by Felipe Gusmao,
+Rhincalanus cornutus j,2008-09-29 00:00:00,Rhincalanidae j,,Not routinely counted; normally counted as Rhincalanus j
+Temora turbinata j,2008-09-29 00:00:00,Temora spp. j,,Not counted routinely; normally counted as Temora j
+Vibilia armata,2008-09-29 00:00:00,Hyperiid amphipod,,Not routinely identified
+Vibilia spp.,2008-09-29 00:00:00,Hyperiid amphipod,,Not routinely identified
+Hyperiella spp.,2008-09-29 00:00:00,Hyperiid amphipod,,Not routinely identified
+Hyperiella antarctica,2008-09-29 00:00:00,Hyperiid amphipod,,Not routinely identified
+Hyperiella dilatata,2008-09-29 00:00:00,Hyperiid amphipod,,Not routinely identified
+Primno macropa,2008-09-29 00:00:00,Hyperiid amphipod,,Not routinely identified
+Scina spp.,2008-09-29 00:00:00,Hyperiid amphipod,,Not routinely identified
+Themisto gaudichaudii,2008-09-29 00:00:00,Hyperiid amphipod,,Not routinely identified
+Hyperia spp.,2008-09-29 00:00:00,Hyperiid amphipod,,Not routinely identified
+Phronima spp.,2008-09-29 00:00:00,Hyperiid amphipod,,Not routinely identified
+Vibilia antarctica,2008-09-29 00:00:00,Hyperiid amphipod,,Not routinely identified
+Primno spp.,2012-05-08 09:06:13,Hyperiid amphipod,,Not routinely identified
+Oxycephalidae,2012-08-28 11:54:38,Hyperiid amphipod,,Not routinely identified
+Lycaea pachypoda f,2014-11-27 11:35:40,Hyperiid amphipod,,Not routinely identified
+Lycaea pachypoda m,2014-11-27 11:36:25,Hyperiid amphipod,,Not routinely identified
+Lycaeopsidae,2013-12-20 14:22:26,Hyperiid amphipod,,Not routinely identified
+Flaccisagitta spp.,2010-09-30 00:00:00,Chaetognatha,External training Mark Gibbons,
+Flaccisagitta enflata,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,
+Serratosagitta tasmanica,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,
+Aidanosagitta neglecta,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,Not routinely identified
+Aidanosagitta regularis,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,Not routinely identified
+Sagitta bipunctata,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,Not routinely identified
+Solidosagitta marri,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,Not routinely identified
+Sagittidae,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,
+Pseudosagitta gazellae,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,Not routinely identified
+Serratosagitta bierii,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,Not routinely identified
+Parasagitta spp.,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,Not routinely identified
+Zonosagitta pulchra,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,Not routinely identified
+Eukrohnia hamata,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,Not routinely identified
+Pterosagitta draco,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,Not routinely identified
+Mesosagitta minima,2010-09-23 00:00:00,Chaetognatha,External training Mark Gibbons,Not routinely identified
+Penaeidae larvae,2015-11-01 00:00:00,Decapod larvae,External training David Conway,
+Auricularia spp. larvae,2015-11-01 00:00:00,Decapod larvae,External training David Conway,
+Brachiolaria larvae,2015-11-01 00:00:00,Decapod larvae,External training David Conway,
+Jasus edwardsii,2014-09-04 12:56:53,Decapod larvae,External training David Conway,Not routinely identified
+Anomura megalopa larvae,2015-11-01 00:00:00,Decapod larvae,External training David Conway,
+Dromiidae larvae,2015-11-01 00:00:00,Decapod larvae,External training David Conway,
+Caridea megalopa larvae,2015-11-11 19:19:49,Decapod larvae,External training David Conway,
+Protozoea decapod larvae,2015-11-01 00:00:00,Decapod larvae,External training David Conway,
+Gebiidea zoea,2015-11-01 00:00:00,Decapod larvae,External training David Conway,
+Callianassidae zoea,2015-11-01 00:00:00,Decapod larvae,External training David Conway,
+Dendrobranchiata larvae,2015-11-01 00:00:00,Decapod larvae,External training David Conway,
+Astacidea zoea,2015-11-01 00:00:00,Decapod larvae,External training David Conway,
+Doliolum denticulatum,2010-01-14 00:00:00,Doliolum spp.,External training Mark Gibbons,
+Doliolum nationalis,2010-01-14 00:00:00,Doliolum spp.,External training Mark Gibbons,
+Dolioletta spp.,2011-07-01 00:00:00,Doliolum spp.,External training Mark Gibbons,
+Pentacrinoid larvae,2008-09-29 00:00:00,Echinoderm larvae,,Not routinely counted
+Ophiurida larvae,2011-02-24 00:00:00,Echinoderm larvae,,Not routinely identified
+Ophiuroidea,2014-12-02 15:10:18,Echinoderm larvae,,Not routinely identified
+Pluteus larva,2014-10-30 12:43:17,Echinoderm larvae,,Not routinely identified
+Echinospira larva,2014-10-27 14:26:51,Echinoderm larvae,,Not routinely identified
+Holothurian auricularia larva,2014-12-18 08:37:31,Echinoderm larvae,,Not routinely identified
+Bipinnaria larva,2015-03-06 11:34:43,Echinoderm larvae,,Not routinely identified
+Holothurian doliolaria larva,2014-12-18 08:38:49,Echinoderm larvae,,Not routinely identified
+Ophiopluteus,2015-11-01 00:00:00,Echinoderm larvae,External training David Conway,
+Echinopluteus,2015-11-01 00:00:00,Echinoderm larvae,External training David Conway,
+Evadne nordmanni f,2010-03-24 00:00:00,Evadne nordmanni,Internal training,
+Evadne nordmanni m,2010-03-24 00:00:00,Evadne nordmanni,Internal training,
+Evadne nordmanni f gravid,2010-03-24 00:00:00,Evadne nordmanni,Internal training,
+Evadne spinifera f gravid,2010-03-24 00:00:00,Evadne spinifera,Internal training,
+Evadne spinifera f,2010-03-24 00:00:00,Evadne spinifera,Internal training,
+Evadne spinifera m,2010-03-24 00:00:00,Evadne spinifera,Internal training,
+Protomyctophum spp.,2008-09-29 00:00:00,Fish larvae,,Not routinely identified
+Fritillaria pellucida,2011-07-01 00:00:00,Fritillariidae,External training Mark Gibbons,
+Fritillaria borealis sargassi,2011-07-01 00:00:00,Fritillariidae,,Not routinely identified
+Fritillaria borealis,2011-07-01 00:00:00,Fritillariidae,,Not routinely identified
+Fritillaria haplostoma,2011-07-01 00:00:00,Fritillariidae,,Not routinely identified
+Fritillaria formica,2011-07-01 00:00:00,Fritillariidae,,Not routinely identified
+Prosobranch,2010-01-01 00:00:00,Gastropod,Internal training,Any non-Limacina gastropd with a whorling shell (shell whorls to right) 
+Limacina,2010-01-01 00:00:00,Gastropod,Internal training,Any Limacina like gastropd with a whorling shell (shell whorls to left)
+Spongiobranchaea australis,2008-09-29 00:00:00,Gastropod,,Not routinely identified
+Lucifer typus f,2010-06-17 00:00:00,Lucifer spp.,Internal training,Not routinely identified
+Lucifer spp. m,2010-06-17 00:00:00,Lucifer spp.,Internal training,
+Lucifer typus,2010-06-17 00:00:00,Lucifer spp.,Internal training,Not routinely identified
+Lucifer typus m,2010-06-17 00:00:00,Lucifer spp.,Internal training,Not routinely identified
+Lucifer spp. f,2010-06-18 00:00:00,Lucifer spp.,Internal training,
+Lucifer spp. mysis,2010-06-17 00:00:00,Lucifer spp.,Internal training,
+Lucifer spp. protozoea,2010-06-17 00:00:00,Lucifer spp.,Internal training,
+Anthomedusae,2010-01-11 00:00:00,Medusa,Taxonomic workshop,
+Cnidarian larvae,2008-09-29 00:00:00,Medusa,,Not routinely identified
+Cubozoan larvae,2008-09-29 00:00:00,Medusa,,Not routinely identified
+Hydromedusae,2010-01-11 00:00:00,Medusa,Taxonomic workshop,
+Trachymedusae,2010-01-11 00:00:00,Medusa,Taxonomic workshop,
+Leptothecata,2010-01-11 00:00:00,Medusa,Taxonomic workshop,Not routinely identified
+Aglaura hemistoma,2011-07-01 00:00:00,Medusa,External training Mark Gibbons,Not routinely identified
+Bassia bassensis,2010-09-14 00:00:00,Medusa,External training Mark Gibbons,
+Liriope tetraphylla,2011-07-01 00:00:00,Medusa,External training Mark Gibbons,Not routinely identified
+Coelenterata larvae,2008-09-29 00:00:00,Medusa,,Not routinely identified
+Narcomedusae,2010-01-11 00:00:00,Medusa,Taxonomic workshop,
+Solmundella bitentaculata,2008-09-29 00:00:00,Medusa,External training Mark Gibbons,Not routinely identified
+Amphinema spp.,2011-07-01 00:00:00,Medusa,External training Mark Gibbons,Not routinely identified
+Clytia spp.,2011-07-01 00:00:00,Medusa,,Not routinely identified
+Leptomedusae,2010-01-11 00:00:00,Medusa,Taxonomic workshop,
+Bougainvillia spp.,2011-07-01 00:00:00,Medusa,,Not routinely identified
+Brachyuran megalopa,2008-09-29 00:00:00,Megalope,,Not counted routinely; normally counted as megalope
+Oikopleura (Vexillaria) dioica,2011-07-01 00:00:00,Oikopleuridae,External training Mark Gibbons,Not routinely identified
+Oikopleura (Coecaria) spp.,2011-07-01 00:00:00,Oikopleuridae,External training Mark Gibbons,Not routinely identified
+Ostracod gravid,2012-10-15 17:26:18,Ostracod,Internal training,Not routinely identified
+Euconchoecia spp.,2014-02-14 10:38:50,Ostracod,,Not routinely identified
+Conchoecia spp.,2014-03-24 11:34:58,Ostracod,,Not routinely identified
+Cypridina spp.,2014-05-12 11:16:26,Ostracod,,Not routinely identified
+Euconchoecia aculeata,2015-11-01 00:00:00,Ostracod,External training David Conway,
+Penilia avirostris f,2010-03-24 00:00:00,Penilia avirostris,Internal training,
+Penilia avirostris f gravid,2010-03-24 00:00:00,Penilia avirostris,Internal training,
+Penilia avirostris m,2010-03-24 00:00:00,Penilia avirostris,Internal training,
+Podon spp. f,2010-03-24 00:00:00,Podon spp.,Internal training,
+Podon intermedius,2010-03-24 00:00:00,Podon spp.,Internal training,
+Podon intermedius f gravid,2010-03-24 00:00:00,Podon spp.,Internal training,
+Podon intermedius f,2010-03-24 00:00:00,Podon spp.,Internal training,
+Podon intermedius m,2010-03-24 00:00:00,Podon spp.,Internal training,
+Travisiopsis spp.,2013-01-01 00:00:00,Polychaete,,Not routinely identified
+Pseudevadne tergestina f,2010-03-24 00:00:00,Pseudevadne tergestina,Internal training,
+Pseudevadne tergestina m,2010-03-24 00:00:00,Pseudevadne tergestina,Internal training,
+Pseudevadne tergestina f gravid,2010-03-24 00:00:00,Pseudevadne tergestina,Internal training,
+Pegea confoederata,2010-02-05 00:00:00,Salpidae,Internal training,
+Ihlea magalhanica solitary,2008-09-29 00:00:00,Salpidae,Internal training,
+Soestia zonaria agg,2011-07-01 00:00:00,Salpidae,External training Mark Gibbons,
+Salpidae sol,2013-07-24 17:43:06,Salpidae,Internal training,
+Salpa fusiformis,2008-09-29 00:00:00,Salpidae,,Not routinely identified
+Siphonophore abylidae,2010-09-14 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Calycophoran,2010-09-14 00:00:00,Siphonophore,Internal training,
+Lensia subtilis,2010-09-14 00:00:00,Siphonophore,External training Mark Gibbons,
+Physonectae,2010-09-14 00:00:00,Siphonophore,External training Mark Gibbons,
+Lensia subtiloides,2010-09-14 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Ceratocymba spp.,2011-07-01 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Abylidae,2010-09-14 00:00:00,Siphonophore,Taxonomic workshop,Not routinely identified
+Siphonophore diphyidae,2010-09-14 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Dimophyes arctica,2011-07-01 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Diphyes chamissonis,2010-09-14 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Diphyes dispar,2011-07-01 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Chelophyes appendiculata,2010-09-14 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Chelophyes contorta,2011-07-01 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Eudoxoides mitra,2011-07-01 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Eudoxoides spiralis,2010-09-14 00:00:00,Siphonophore,External training Mark Gibbons,
+Abylopsis spp.,2011-07-01 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Lensia spp.,2010-09-14 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Abylopsis eschscholtzii,2010-09-14 00:00:00,Siphonophore,,Not routinely identified
+Gonophores unid,2011-07-01 00:00:00,Siphonophore,,Not routinely identified
+Lensia multicristata,2010-09-14 00:00:00,Siphonophore,,Not routinely identified
+Nanomia spp.,2010-09-14 00:00:00,Siphonophore,,Not routinely identified
+Eudoxoides spp.,2010-09-14 00:00:00,Siphonophore,External training Mark Gibbons,Not routinely identified
+Chelophyes spp.,2011-07-01 00:00:00,Sipunculid worm larvae,External training Mark Gibbons,Not routinely identified
+Pelagosphera larvae,2014-09-25 12:12:55,Sipunculid worm larvae,,Not routinely identified
+Limacina helicina,2008-09-29 00:00:00,Limacina,,Not routinely identified
+Limacina retroversa,2008-09-29 00:00:00,Limacina,,Not routinely identified
+Clio pyramidata,2008-09-29 00:00:00,Cavoliniidae,,Not routinely identified
+Clione antarctica,2008-09-29 00:00:00,Cavoliniidae,,Not routinely identified
+Clio spp.,2008-09-29 00:00:00,Cavoliniidae,,Not routinely identified
+Creseis spp.,2008-09-29 00:00:00,Cavoliniidae,,Not routinely counted; normally counted as Cavonlinnidae
+Clausocalanus spp. i,2010-09-16 00:00:00,Clausocalanus spp. j,Internal training in intersexes by Felipe Gusmao,
+Clausocalanus furcatus m,2008-09-29 00:00:00,Clausocalanus spp. m,Internal training Frost & Fleminger,Clausocalanus males not routinely speciated
+Clausocalanus brevipes m,2008-09-29 00:00:00,Clausocalanus spp. m,Internal training Frost & Fleminger,Clausocalanus males not routinely speciated
+Clausocalanus ingens m,2009-10-12 00:00:00,Clausocalanus spp. m,Internal training Frost & Fleminger,Clausocalanus males not routinely speciated
+Thalia democratica sol,2010-01-11 00:00:00,Thalia democratica,Internal training,
+Thalia democratica agg,2010-01-11 00:00:00,Thalia democratica,Internal training,
+Oithona Grp6 (square head) f,2010-10-20 00:00:00,Oithona spp. f,,Includes Diothona oculata D. rigida Oithona brevicornis O. decipiens O. fallax O. nana O. similis (WA use only)
+Oithona Grp5 (orange furcae) f,2010-10-20 00:00:00,Oithona spp. f,,Includes Diothona rigida (WA use only)
+Oithona frigida m,2011-07-08 00:00:00,Oithona spp. small m,,Oithonidae males not routinely speciated
+Oithona simplex m,2011-07-08 00:00:00,Oithona spp. small m,,Oithonidae males not routinely speciated
+Dioithona rigida m,2011-07-08 00:00:00,Oithona spp. small m,,Oithonidae males not routinely speciated
+Triconia spp. f,2010-09-23 00:00:00,Oncaea spp. f,External training Ruth Bottger Schnack,
+Triconia elongata f,2010-09-23 00:00:00,Oncaea spp. f,External training Ruth Bottger Schnack,
+Triconia redacta f,2010-09-23 00:00:00,Oncaea spp. f,External training Ruth Bottger Schnack,
+Triconia umerus f,2010-09-23 00:00:00,Oncaea spp. f,External training Ruth Bottger Schnack,
+Triconia conifera complex f,2010-09-23 00:00:00,Oncaea spp. f,External training Ruth Bottger Schnack,
+Triconia dentipes complex f,2010-09-23 00:00:00,Oncaea spp. f,External training Ruth Bottger Schnack,
+Oncaea zernovi complex f,2010-09-23 00:00:00,Oncaea spp. f,,Not routinely identified
+Triconia dentipes f,2010-09-23 00:00:00,Oncaea spp. f,External training Ruth Bottger Schnack,
+Triconia spp. m,2010-09-23 00:00:00,Oncaea spp. f,External training Ruth Bottger Schnack,
+Oncaea vodjanitskii complex f,2010-09-23 00:00:00,Oncaea spp. f,,Not routinely identified
+Triconia dentipes complex m,2010-09-23 00:00:00,Oncaea spp. f,External training Ruth Bottger Schnack,
+Triconia denticula f,2010-09-23 00:00:00,Oncaea spp. f,External training Ruth Bottger Schnack,Species confirmed by Ruth Boettger-Schnack 20150121.
+Oncaea clevei complex m,2008-09-29 00:00:00,Oncaea spp. m,,Oncaeidae males not routinely speciated unless found coupled or assigned to a dominant female count
+Oncaea media complex m,2008-09-29 00:00:00,Oncaea spp. m,,Oncaeidae males not routinely speciated unless found coupled or assigned to a dominant female count
+Oncaea mediterranea complex m,2008-09-29 00:00:00,Oncaea spp. m,,Oncaeidae males not routinely speciated unless found coupled or assigned to a dominant female count
+Oncaea venusta complex m,2008-09-29 00:00:00,Oncaea spp. m,,Oncaeidae males not routinely speciated unless found coupled or assigned to a dominant female count
+Oncaea zernovi complex m,2010-09-23 00:00:00,Oncaea spp. m,,Oncaeidae males not routinely speciated unless found coupled or assigned to a dominant female count
+Triconia conifera complex m,2010-09-23 00:00:00,Oncaea spp. m,,Not routinely identified
+Oncaea venusta medium m,2010-09-23 00:00:00,Oncaea spp. m,,Oncaeidae males not routinely speciated unless found coupled or assigned to a dominant female count
+Oncaea media m,2010-09-23 00:00:00,Oncaea spp. m,,Not routinely identified
+Oncaea spp. m <0.4mm,2015-05-01 00:00:00,Oncaea spp. m,Internal training,Better size discrimination of Oncaea/Triconia males
+Oncaea spp. m 0.4<>0.7mm,2015-05-01 00:00:00,Oncaea spp. m,Internal training,Better size discrimination of Oncaea/Triconia males
+Oncaea spp. m >0.7mm,2015-05-01 00:00:00,Oncaea spp. m,Internal training,Better size discrimination of Oncaea/Triconia males
+Dioithona rigida f,2011-07-08 00:00:00,Oithona Grp5 (orange furcae) f,External training Dave McKinnon,
+Dioithona oculata f,2011-07-08 00:00:00,Oithona Grp5 (orange furcae) f,External training Dave McKinnon,
+Cladoceran f,2010-03-24 00:00:00,Cladoceran,Internal training,
+Cladoceran f gravid,2010-03-24 00:00:00,Cladoceran,Internal training,
+Pleopis polyphemoides,2010-03-24 00:00:00,Cladoceran,,Not routinely identified
+Lipmanella dictyoceras,2015-03-06 11:30:33,Radiozoa,,Not routinely identified
+Oncaea clevei f,2010-09-23 00:00:00,Oncaea clevei complex f,External training Ruth Bottger Schnack,
+Oncaea paraclevei f,2010-09-23 00:00:00,Oncaea clevei complex f,External training Ruth Bottger Schnack,
+Plastic blue strand,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic red strand,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic yellow strand,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic green strand,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic clear strand,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic black strand,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic blue bead,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic red bead,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic yellow bead,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic green bead,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic clear bead,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic black bead,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic blue flake,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic red flake,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic yellow flake,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic green flake,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic clear flake,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic black flake,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Plastic other,2015-08-24 00:00:00,Plastic (NRS),,Plastic pieces to be counted from this data
+Acrocalanus spp. i,2010-09-16 00:00:00,Acrocalanus spp. j,Internal training in intersexes by Felipe Gusmao,
+Pilidium larvae,2008-09-29 00:00:00,Nematoda,,Not routinely identified
+Cymbaloporetta spp.,2016-04-14 15:05:32,Foraminifera,,Not routinely identified
+Lingula spp. larvae,2008-09-29 00:00:00,Brachiopoda,,Not routinely identified
+Parvocalanus crassirostris i,2010-09-16 00:00:00,Parvocalanus spp. j,Internal training,

@@ -541,6 +541,7 @@ cprCop1 <- cprZdat %>%
            Species != "spp." & 
            !is.na(Species) & 
            !grepl("cf.", Species) & 
+           !grepl("/", Species) & 
            !grepl("grp", Species)) %>% 
   mutate(Species = paste0(Genus," ", word(Species,1))) %>% # bin complexes
   group_by(Sample, Species) %>% 
@@ -558,7 +559,8 @@ cprCop1 <- cprZsamp %>%
 # add change log species with -999 for NA"s and real absences as 0"s
 cprCop2 <- cprZdat %>% 
   filter(TaxonName %in% levels(as.factor(clc$TaxonName)) & Copepod =="COPEPOD"
-         & Species != "spp." & !is.na(Species) & !grepl("cf.", Species) & !grepl("grp", Species)) %>% 
+         & Species != "spp." & !is.na(Species) & !grepl("cf.", Species) & !grepl("grp", Species)  & 
+         !grepl("/", Species)) %>% 
   mutate(Species = paste0(Genus," ", word(Species,1))) %>% # bin complexes
   left_join(cprZcl, by = "TaxonName") %>%
   mutate(Species = as_factor(Species)) %>% drop_na(Species) %>%
