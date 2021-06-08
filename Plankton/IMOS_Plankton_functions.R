@@ -87,7 +87,8 @@ get_ZooInfo <- function(){
 
 # Bring in chemistry data
 getChemistry <- function(){
-  chemistry <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/BGC_Chemistry.csv", na = c("", NaN)) %>% 
+  chemistry <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/BGC_Chemistry.csv", na = c("", NaN),
+                        col_types = cols(DIC_UMOLKG = col_double())) %>% 
   rename(NRScode = TRIP_CODE,
          SampleDepth_m = SAMPLEDEPTH_M, Silicate_umolL = SILICATE_UMOLL, Nitrate_umolL =  NITRATE_UMOLL,
          Phosphate_umolL =  PHOSPHATE_UMOLL, Salinity_PSU = SALINITY_PSU, 
@@ -107,13 +108,13 @@ getChemistry <- function(){
          TAlkalinity_umolkg = ifelse(ALKALINITY_FLAG %in% c(3,4,9), NA, TAlkalinity_umolkg),
          Salinity_PSU = ifelse(SALINITY_FLAG %in% c(3,4,9), NA, Salinity_PSU)) %>%
   group_by(NRScode, SampleDepth_m) %>% 
-  summarise(Silicate_umolL = mean(Silicate_umolL, na.rm = TRUE), # some replicated samples from error picking up PHB data, needs addressing in database
+   summarise(Silicate_umolL = mean(Silicate_umolL, na.rm = TRUE), # some replicated samples from error picking up PHB data, needs addressing in database
             Phosphate_umolL = mean(Phosphate_umolL, na.rm = TRUE),
             Ammonium_umolL = mean(Ammonium_umolL, na.rm = TRUE),
             Nitrate_umolL = mean(Nitrate_umolL, na.rm = TRUE),
             Nitrite_umolL = mean(Nitrite_umolL, na.rm = TRUE),
             Oxygen_umolL = mean(Oxygen_umolL, na.rm = TRUE),
-            DIC_umolkg = mean(DIC_umolkg, na.rm = TRUE),
+            DIC_umolkg = sum(DIC_umolkg, na.rm = TRUE),
             TAlkalinity_umolkg = mean(TAlkalinity_umolkg, na.rm = TRUE),
             Salinity_PSU = mean(Salinity_PSU, na.rm = TRUE),
             .groups = "drop") %>% 
