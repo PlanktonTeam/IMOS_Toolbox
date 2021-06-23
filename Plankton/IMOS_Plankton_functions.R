@@ -31,7 +31,7 @@ getNRSTrips <- function(){
              Time_24hr = str_sub(SampleDateLocal, -8, -1), # hms doesn"t seem to work on 00:00:00 times
              tz = tz_lookup_coords(Latitude, Longitude, method = "fast"),
              SampleDateUTC = with_tz(force_tzs(SampleDateLocal, tz, roll = TRUE), "UTC")) %>% 
-      select(TripCode:SampleDateLocal, Year:SampleDateUTC, Biomass_mgm3, Secchi_m) %>%
+      select(TripCode:SampleDateLocal, Year:SampleDateUTC, Biomass_mgm3, Secchi_m, SampleType) %>%
       select(-tz)
   return(NRSSamp)
 }

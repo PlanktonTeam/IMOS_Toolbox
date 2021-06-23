@@ -21,20 +21,19 @@ source("IMOS_Plankton_functions.R")
 #### NRS Phytoplankton #### #################################################################################################################################
 
 # Bring in all NRS phytoplankton samples, data and changelog
-NRSSamp <- getNRSTrips() %>% select(-Biomass_mgm3)
+NRSSamp <- getNRSTrips() %>% select(-c(Biomass_mgm3, Secchi_m))
 NRSPdat <- getNRSPhytoData()
 NRSPcl <- getNRSPhytoChangeLog()
 
 #### Raw Phytoplankton ####
 
-NRSRawP1 <- left_join(NRSSamp %>% filter(grepl('P', SampleType)), NRSPdat, by = "Sample") %>% 
+NRSRawP1 <- left_join(NRSSamp %>% filter(grepl('P', SampleType)), NRSPdat, by = "TripCode") %>% 
   select(-c(TaxonGroup, Genus, Species, Biovolume_um3L, SPCODE, SampleType)) %>% 
   arrange(-desc(TaxonName)) 
 
 NRSRawP <- NRSRawP1 %>% 
   pivot_wider(names_from = TaxonName, values_from = Cells_L, values_fill = list(Cells_L = 0)) %>% 
   arrange(desc(SampleDateLocal)) %>% 
-  select(-Sample) %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
 fwrite(NRSRawP, file = paste0(outD,.Platform$file.sep,"NRS_Phyto_RawMat.csv"), row.names = FALSE)
@@ -43,12 +42,12 @@ rm(NRSRawP1)
 #### Higher Trophic Groups Abund ####
 
 NRSHTGP1 <- NRSPdat %>% 
-  group_by(Sample, TaxonGroup) %>% 
+  group_by(TripCode, TaxonGroup) %>% 
   summarise(Cells_L = sum(Cells_L, na.rm = TRUE), .groups = "drop") %>%
   filter(!TaxonGroup %in% c("Other","Coccolithophore", "Diatom","Protozoa")) 
 
 NRSHTGP1 <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
-  left_join(NRSHTGP1, by = "Sample") %>% 
+  left_join(NRSHTGP1, by = "TripCode") %>% 
   mutate(TaxonGroup = ifelse(is.na(TaxonGroup), "Ciliate", TaxonGroup),
          Cells_L = ifelse(is.na(Cells_L), 0, Cells_L)) %>% 
   arrange(-desc(TaxonGroup))
@@ -56,7 +55,7 @@ NRSHTGP1 <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
 NRSHTGP <-  NRSHTGP1 %>% 
   pivot_wider(names_from = TaxonGroup, values_from = Cells_L, values_fill = list(Cells_L = 0)) %>% 
   arrange(desc(SampleDateLocal)) %>% 
-  select(-c(Sample, SampleType))
+  select(-c(SampleType))
 
 fwrite(NRSHTGP, file = paste0(outD,.Platform$file.sep,"NRS_Phyto_HTGMat.csv"), row.names = FALSE)
 rm(NRSHTGP1)
@@ -73,16 +72,16 @@ nrslg <- NRSPcl %>%
 # for non change log species
 NRSGenP1 <- NRSPdat %>% 
   filter(!TaxonName %in% levels(as.factor(nrslg$TaxonName)) & Genus != '') %>% 
-  group_by(Sample, Genus) %>% 
+  group_by(TripCode, Genus) %>% 
   summarise(Cells_L = sum(Cells_L, na.rm = TRUE), .groups = "drop") %>% 
   drop_na(Genus) 
 
 NRSGenP1 <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
-  left_join(NRSGenP1, by = "Sample") %>% 
+  left_join(NRSGenP1, by = "TripCode") %>% 
   mutate(StartDate = ymd("2007-12-19"),
          Genus = ifelse(is.na(Genus), "Acanthoica", Genus),
          Cells_L = ifelse(is.na(Cells_L), 0, Cells_L)) %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
   summarise(Cells_L = sum(Cells_L), .groups = "drop") %>% 
   as.data.frame()
 
@@ -92,7 +91,7 @@ NRSGenP2 <- NRSPdat %>%
   left_join(NRSPcl, by = "TaxonName") %>%
   mutate(Genus = as_factor(Genus)) %>% 
   drop_na(Genus) %>%
-  group_by(Sample, StartDate, Genus) %>% 
+  group_by(TripCode, StartDate, Genus) %>% 
   summarise(Cells_L = sum(Cells_L, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(NRSGenP2$Genus)) {
@@ -108,19 +107,19 @@ for (i in 1:nlevels(NRSGenP2$Genus)) {
     droplevels() 
   
   gen <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
-    left_join(gen, by = "Sample") %>%
+    left_join(gen, by = "TripCode") %>%
     mutate(StartDate = replace(StartDate, is.na(StartDate), Dates$StartDate),
            Genus = replace(Genus, is.na(Genus), Dates$Genus),
            Cells_L = replace(Cells_L, StartDate>SampleDateLocal, -999), 
            Cells_L = replace(Cells_L, StartDate<SampleDateLocal & is.na(Cells_L), 0)) %>% 
-    group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
+    group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
     summarise(Cells_L = sum(Cells_L), .groups = "drop") %>% 
     as.data.frame()     
   NRSGenP1 <- rbind(NRSGenP1, gen)
 }
 
 NRSGenP1 <- NRSGenP1 %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
   summarise(Cells_L = max(Cells_L), .groups = "drop") %>% 
   arrange(-desc(Genus)) %>% 
   as.data.frame()
@@ -147,15 +146,15 @@ NRSSpecP1 <- NRSPdat %>%
   mutate(TaxonName = paste0(Genus, ' ', Species)) %>% # remove comments about with flagellates or cilliates etc.
   filter(!TaxonName %in% levels(as.factor(nrsls$TaxonName))
          & Species != "spp." & !is.na(Species) & !grepl("cf.", Species) & !grepl("/", Species)) %>% 
-  group_by(Sample, TaxonName) %>% 
+  group_by(TripCode, TaxonName) %>% 
   summarise(Cells_L = sum(Cells_L, na.rm = TRUE), .groups = "drop")
 
 NRSSpecP1 <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
-  left_join(NRSSpecP1, by = "Sample") %>% 
+  left_join(NRSSpecP1, by = "TripCode") %>% 
   mutate(StartDate = ymd("2007-12-19"),
          TaxonName = ifelse(is.na(TaxonName), "Paralia sulcata", TaxonName),
          Cells_L = ifelse(is.na(Cells_L), 0, Cells_L)) %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
   summarise(Cells_L = sum(Cells_L), .groups = "drop") %>% 
   as.data.frame()
 
@@ -167,7 +166,7 @@ NRSSpecP2 <- NRSPdat %>%
   left_join(NRSPcl, by = "TaxonName") %>%
   mutate(TaxonName = as_factor(TaxonName)) %>% 
   drop_na(TaxonName) %>%
-  group_by(Sample, StartDate, TaxonName) %>% 
+  group_by(TripCode, StartDate, TaxonName) %>% 
   summarise(Cells_L = sum(Cells_L, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(NRSSpecP2$TaxonName)) {
@@ -183,19 +182,19 @@ for (i in 1:nlevels(NRSSpecP2$TaxonName)) {
     droplevels() 
   
   spec <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
-    left_join(spec, by = "Sample") %>%
+    left_join(spec, by = "TripCode") %>%
     mutate(StartDate = replace(StartDate, is.na(StartDate), Dates$StartDate),
            TaxonName = replace(TaxonName, is.na(TaxonName), Dates$TaxonName),
            Cells_L = replace(Cells_L, StartDate>SampleDateLocal, -999), 
            Cells_L = replace(Cells_L, StartDate<SampleDateLocal & is.na(Cells_L), 0)) %>% 
-    group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
+    group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
     summarise(Cells_L = sum(Cells_L), .groups = "drop") %>% 
     as.data.frame()     
   NRSSpecP1 <- rbind(NRSSpecP1, spec)
 }
 
 NRSSpecP1 <- NRSSpecP1 %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
   summarise(Cells_L = max(Cells_L), .groups = "drop") %>% 
   arrange(-desc(TaxonName)) %>% 
   as.data.frame() 
@@ -213,12 +212,12 @@ rm(NRSSpecP1, NRSSpecP2)
 #### Higher Trophic Groups BioV ####
 
 NRSHTGPB1 <- NRSPdat %>% 
-  group_by(Sample, TaxonGroup) %>% 
+  group_by(TripCode, TaxonGroup) %>% 
   summarise(BioV_um3L = sum(Biovolume_um3L, na.rm = TRUE), .groups = "drop") %>%
   filter(!TaxonGroup %in% c("Other","Coccolithophore", "Diatom","Protozoa")) 
 
 NRSHTGPB1 <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
-  left_join(NRSHTGPB1, by = "Sample") %>% 
+  left_join(NRSHTGPB1, by = "TripCode") %>% 
   mutate(TaxonGroup = ifelse(is.na(TaxonGroup), "Ciliate", TaxonGroup),
          BioV_um3L = ifelse(is.na(BioV_um3L), 0, BioV_um3L)) %>% 
   arrange(-desc(TaxonGroup))
@@ -226,7 +225,7 @@ NRSHTGPB1 <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
 NRSHTGPB <-  NRSHTGPB1 %>% 
   pivot_wider(names_from = TaxonGroup, values_from = BioV_um3L, values_fill = list(BioV_um3L = 0)) %>% 
   arrange(desc(SampleDateLocal)) %>% 
-  select(-c(Sample, SampleType))
+  select(-c(TripCode, SampleType))
 
 fwrite(NRSHTGPB, file = paste0(outD,.Platform$file.sep,"NRS_Phyto_BioVolHTGMat.csv"), row.names = FALSE)
 rm(NRSHTGPB1)
@@ -243,16 +242,16 @@ nrslg <- NRSPcl %>%
 # for non change log species
 NRSGenPB1 <- NRSPdat %>% 
   filter(!TaxonName %in% levels(as.factor(nrslg$TaxonName)) & Genus != "") %>% 
-  group_by(Sample, Genus) %>% 
+  group_by(TripCode, Genus) %>% 
   summarise(BioV_um3L = sum(Biovolume_um3L, na.rm = TRUE), .groups = "drop") %>% 
   drop_na(Genus) 
 
 NRSGenPB1 <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
-  left_join(NRSGenPB1, by = "Sample") %>% 
+  left_join(NRSGenPB1, by = "TripCode") %>% 
   mutate(StartDate = ymd("2007-12-19"),
          Genus = ifelse(is.na(Genus), "Acanthoica", Genus),
          BioV_um3L = ifelse(is.na(BioV_um3L), 0, BioV_um3L)) %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
   summarise(BioV_um3L = sum(BioV_um3L), .groups = "drop") %>% 
   as.data.frame()
 
@@ -262,7 +261,7 @@ NRSGenPB2 <- NRSPdat %>%
   left_join(NRSPcl, by = "TaxonName") %>%
   mutate(Genus = as_factor(Genus)) %>% 
   drop_na(Genus) %>%
-  group_by(Sample, StartDate, Genus) %>% 
+  group_by(TripCode, StartDate, Genus) %>% 
   summarise(BioV_um3L = sum(Biovolume_um3L, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(NRSGenPB2$Genus)) {
@@ -279,19 +278,19 @@ for (i in 1:nlevels(NRSGenPB2$Genus)) {
     droplevels() 
   
   gen <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
-    left_join(gen, by = "Sample") %>%
+    left_join(gen, by = "TripCode") %>%
     mutate(StartDate = replace(StartDate, is.na(StartDate), Dates$StartDate),
            Genus = replace(Genus, is.na(Genus), Dates$Genus),
            BioV_um3L = replace(BioV_um3L, StartDate>SampleDateLocal, -999), 
            BioV_um3L = replace(BioV_um3L, StartDate<SampleDateLocal & is.na(BioV_um3L), 0)) %>% 
-    group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
+    group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
     summarise(BioV_um3L = sum(BioV_um3L), .groups = "drop") %>% 
     as.data.frame()     
   NRSGenPB1 <- rbind(NRSGenPB1, gen)
 }
 
 NRSGenPB1 <- NRSGenPB1 %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
   summarise(BioV_um3L = max(BioV_um3L), .groups = "drop") %>% 
   arrange(-desc(Genus)) %>% 
   as.data.frame()
@@ -323,15 +322,15 @@ NRSSpecPB1 <- NRSPdat %>%
   filter(!TaxonName %in% levels(as.factor(nrsls$TaxonName)) &
          Species != "spp." & !is.na(Species) & !grepl("cf.", Species)) %>% 
   rbind(NRSPdat1) %>% 
-  group_by(Sample, TaxonName) %>% 
+  group_by(TripCode, TaxonName) %>% 
   summarise(BioV_um3L = sum(Biovolume_um3L, na.rm = TRUE), .groups = "drop")
 
 NRSSpecPB1 <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
-  left_join(NRSSpecPB1, by = "Sample") %>% 
+  left_join(NRSSpecPB1, by = "TripCode") %>% 
   mutate(StartDate = ymd("2007-12-19"),
          TaxonName = ifelse(is.na(TaxonName), "Paralia sulcata", TaxonName),
          BioV_um3L = ifelse(is.na(BioV_um3L), 0, BioV_um3L)) %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
   summarise(BioV_um3L = sum(BioV_um3L), .groups = "drop") %>% 
   as.data.frame()
 
@@ -350,7 +349,7 @@ NRSSpecPB2 <- NRSPdat %>%
   filter(TaxonName != '') %>%
   mutate(TaxonName = as_factor(TaxonName)) %>% 
   drop_na(TaxonName) %>%
-  group_by(Sample, StartDate, TaxonName) %>% 
+  group_by(TripCode, StartDate, TaxonName) %>% 
   summarise(BioV_um3L = sum(Cells_L, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(NRSSpecPB2$TaxonName)) {
@@ -367,19 +366,19 @@ for (i in 1:nlevels(NRSSpecPB2$TaxonName)) {
     droplevels() 
   
   spec <- NRSSamp %>% filter(grepl('P', SampleType)) %>%
-    left_join(spec, by = "Sample") %>%
+    left_join(spec, by = "TripCode") %>%
     mutate(StartDate = replace(StartDate, is.na(StartDate), Dates$StartDate),
            TaxonName = replace(TaxonName, is.na(TaxonName), Dates$TaxonName),
            BioV_um3L = replace(BioV_um3L, StartDate>SampleDateLocal, -999), 
            BioV_um3L = replace(BioV_um3L, StartDate<SampleDateLocal & is.na(BioV_um3L), 0)) %>% 
-    group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
+    group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
     summarise(BioV_um3L = sum(BioV_um3L), .groups = "drop") %>% 
     as.data.frame()     
   NRSSpecPB1 <- rbind(NRSSpecPB1, spec)
 }
 
 NRSSpecPB1 <- NRSSpecPB1 %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, TaxonName) %>%
   summarise(BioV_um3L = max(BioV_um3L), .groups = "drop") %>% 
   arrange(-desc(TaxonName)) %>% 
   as.data.frame() 
@@ -400,8 +399,8 @@ NRSZcl <- getNRSZooChangeLog()
 
 #### Raw Zooplankton ####
 
-NRSRawZ1 <- left_join(NRSSamp %>% filter(grepl('Z', SampleType)), NRSZdat, by = "Sample") %>% 
-  select(-c(Sample, Copepod, TaxonGroup, Genus, Species, SampleType, SPCODE)) %>% 
+NRSRawZ1 <- left_join(NRSSamp %>% filter(grepl('Z', SampleType)), NRSZdat, by = "TripCode") %>% 
+  select(-c(Copepod, TaxonGroup, Genus, Species, SampleType, SPCODE)) %>% 
   arrange(-desc(TaxonName)) 
 
 NRSRawZ <- NRSRawZ1 %>% 
@@ -414,9 +413,9 @@ rm(NRSRawZ1)
 
 ### Sex and stage binned
 
-NRSIdsZ <- left_join(NRSSamp %>% filter(grepl('Z', SampleType)), NRSZdat, by = "Sample") %>%
+NRSIdsZ <- left_join(NRSSamp %>% filter(grepl('Z', SampleType)), NRSZdat, by = "TripCode") %>%
   mutate(TaxonName = ifelse(is.na(Genus), TaxonName, paste0(Genus, ' ', Species))) %>%
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, SampleDateUTC, TaxonName) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, SampleDateUTC, TaxonName) %>%
   summarise(ZAbund_m3 = sum(ZAbund_m3, na.rm = TRUE)) %>%
   arrange(-desc(TaxonName))  %>% 
   pivot_wider(names_from = TaxonName, values_from = ZAbund_m3, values_fill = list(ZAbund_m3 = 0)) %>% 
@@ -427,19 +426,19 @@ fwrite(NRSIdsZ, file = paste0(outD,.Platform$file.sep,"NRS_Zoop_IDsMat.csv"), ro
 
 #### Higher Trophic Groups ####
 nrsHTGZ1 <- NRSZdat %>% 
-  group_by(Sample, TaxonGroup) %>% 
+  group_by(TripCode, TaxonGroup) %>% 
   summarise(ZAbund_m3 = sum(ZAbund_m3, na.rm = TRUE), .groups = "drop") %>%
   filter(!TaxonGroup %in% c("Other")) 
 
 nrsHTGZ1 <-  NRSSamp %>% filter(grepl('Z', SampleType)) %>% 
-  left_join(nrsHTGZ1, by = "Sample") %>% 
+  left_join(nrsHTGZ1, by = "TripCode") %>% 
   mutate(TaxonGroup = ifelse(is.na(TaxonGroup), "Copepod", TaxonGroup),
          ZAbund_m3 = ifelse(is.na(ZAbund_m3), 0, ZAbund_m3)) %>% arrange(-desc(TaxonGroup))
 
 nrsHTGZ <-  nrsHTGZ1 %>% 
   pivot_wider(names_from = TaxonGroup, values_from = ZAbund_m3, values_fill = list(ZAbund_m3 = 0)) %>% 
   arrange(desc(SampleDateLocal)) %>% 
-  select(-c(Sample, SampleType)) %>% 
+  select(-c(SampleType)) %>% 
   mutate(SampleDateLocal = as.character(SampleDateLocal))
 
 fwrite(nrsHTGZ, file = paste0(outD,.Platform$file.sep,"NRS_Zoop_HTGMat.csv"), row.names = FALSE)
@@ -457,16 +456,16 @@ nrszlg <- NRSZcl %>%
 # for non change log species
 NRSGenZ1 <- NRSZdat %>% 
   filter(!TaxonName %in% levels(as.factor(nrszlg$TaxonName)) & Genus != "") %>% 
-  group_by(Sample, Genus) %>% 
+  group_by(TripCode, Genus) %>% 
   summarise(ZAbund_m3 = sum(ZAbund_m3, na.rm = TRUE), .groups = "drop") %>% 
   drop_na(Genus) 
 
 NRSGenZ1 <- NRSSamp %>% filter(grepl('Z', SampleType)) %>% 
-  left_join(NRSGenZ1, by = "Sample") %>% 
+  left_join(NRSGenZ1, by = "TripCode") %>% 
   mutate(StartDate = ymd("2007-12-19"),
          Genus = ifelse(is.na(Genus), "Acanthoica", word(Genus,1)), # bin subgenera together
          ZAbund_m3 = ifelse(is.na(ZAbund_m3), 0, ZAbund_m3))  %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
   summarise(ZAbund_m3 = sum(ZAbund_m3), .groups = "drop") %>% 
   as.data.frame()
 
@@ -476,7 +475,7 @@ NRSGenP2 <- NRSZdat %>%
   left_join(NRSZcl, by = "TaxonName") %>%
   mutate(Genus = as_factor(Genus)) %>% 
   drop_na(Genus) %>%
-  group_by(Sample, StartDate, Genus) %>% 
+  group_by(TripCode, StartDate, Genus) %>% 
   summarise(ZAbund_m3 = sum(ZAbund_m3, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(NRSGenP2$Genus)) {
@@ -493,19 +492,19 @@ for (i in 1:nlevels(NRSGenP2$Genus)) {
     droplevels() 
   
   gen <- NRSSamp %>% filter(grepl('Z', SampleType)) %>% 
-    left_join(gen, by = "Sample") %>%
+    left_join(gen, by = "TripCode") %>%
     mutate(StartDate = replace(StartDate, is.na(StartDate), Dates$StartDate),
            Genus = replace(Genus, is.na(Genus), Dates$Genus),
            ZAbund_m3 = replace(ZAbund_m3, StartDate>SampleDateLocal, -999), 
            ZAbund_m3 = replace(ZAbund_m3, StartDate<SampleDateLocal & is.na(ZAbund_m3), 0)) %>% 
-    group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
+    group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
     summarise(ZAbund_m3 = sum(ZAbund_m3), .groups = "drop") %>% 
     as.data.frame()     
   NRSGenZ1 <- rbind(NRSGenZ1, gen)
 }
 
 NRSGenZ1 <- NRSGenZ1 %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Genus) %>%
   summarise(ZAbund_m3 = max(ZAbund_m3), .groups = "drop") %>% 
   arrange(-desc(Genus)) %>% 
   as.data.frame() 
@@ -533,15 +532,15 @@ NRSCop1 <- NRSZdat %>%
          & Species != "spp." & !is.na(Species) & !grepl("cf.", Species)  & 
            !grepl("/", Species) & !grepl("grp", Species)) %>% 
   mutate(Species = paste0(Genus," ", word(Species,1))) %>% # bin complexes
-  group_by(Sample, Species) %>% 
+  group_by(TripCode, Species) %>% 
   summarise(ZAbund_m3 = sum(ZAbund_m3, na.rm = TRUE), .groups = "drop")
 
 NRSCop1 <- NRSSamp %>% filter(grepl('Z', SampleType)) %>% 
-  left_join(NRSCop1, by = "Sample") %>% 
+  left_join(NRSCop1, by = "TripCode") %>% 
   mutate(StartDate = ymd("2007-12-19"),
          Species = ifelse(is.na(Species), "Calanus Australis", Species), # avoids nulls in pivot
          ZAbund_m3 = ifelse(is.na(ZAbund_m3), 0, ZAbund_m3)) %>%  # avoids nulls in pivot
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
   summarise(ZAbund_m3 = sum(ZAbund_m3), .groups = "drop") %>% 
   as.data.frame()
 
@@ -554,7 +553,7 @@ NRSCop2 <- NRSZdat %>%
   left_join(NRSZcl, by = "TaxonName") %>%
   mutate(Species = as_factor(Species)) %>% 
   drop_na(Species) %>%
-  group_by(Sample, StartDate, Species) %>% 
+  group_by(TripCode, StartDate, Species) %>% 
   summarise(ZAbund_m3 = sum(ZAbund_m3, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(NRSCop2$Species)) {
@@ -571,19 +570,19 @@ for (i in 1:nlevels(NRSCop2$Species)) {
     droplevels() 
   
   copes <- NRSSamp %>% filter(grepl('Z', SampleType)) %>% 
-    left_join(copes, by = "Sample") %>%
+    left_join(copes, by = "TripCode") %>%
     mutate(StartDate = replace(StartDate, is.na(StartDate), Dates$StartDate),
            Species = replace(Species, is.na(Species), Dates$Species),
            ZAbund_m3 = replace(ZAbund_m3, StartDate>SampleDateLocal, -999), 
            ZAbund_m3 = replace(ZAbund_m3, StartDate<SampleDateLocal & is.na(ZAbund_m3), 0)) %>% 
-    group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
+    group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
     summarise(ZAbund_m3 = sum(ZAbund_m3), .groups = "drop") %>% 
     as.data.frame()     
   NRSCop1 <- rbind(NRSCop1, copes)
 }
 
 NRSCop1 <- NRSCop1 %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
   summarise(ZAbund_m3 = max(ZAbund_m3), .groups = "drop") %>% 
   arrange(-desc(Species)) %>% 
   as.data.frame() 
@@ -604,15 +603,15 @@ NRSnCop1 <- NRSZdat %>%
   filter(!TaxonName %in% levels(as.factor(nrsclc$TaxonName)) & Copepod =="NON-COPEPOD"
          & Species != "spp." & !is.na(Species) & !grepl("cf.", Species) & !grepl("grp", Species)) %>% 
   mutate(Species = paste0(Genus," ", word(Species,1))) %>% # bin complexes
-  group_by(Sample, Species) %>% 
+  group_by(TripCode, Species) %>% 
   summarise(ZAbund_m3 = sum(ZAbund_m3, na.rm = TRUE), .groups = "drop")
 
 NRSnCop1 <- NRSSamp %>% filter(grepl('Z', SampleType)) %>% 
-  left_join(NRSnCop1, by = "Sample") %>% 
+  left_join(NRSnCop1, by = "TripCode") %>% 
   mutate(StartDate = ymd("2007-12-19"),
          Species = ifelse(is.na(Species), "Calanus Australis", Species), # avoids nulls in pivot
          ZAbund_m3 = ifelse(is.na(ZAbund_m3), 0, ZAbund_m3)) %>%  # avoids nulls in pivot
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
   summarise(ZAbund_m3 = sum(ZAbund_m3), .groups = "drop") %>% 
   as.data.frame()
 
@@ -624,7 +623,7 @@ NRSnCop2 <- NRSZdat %>%
   left_join(NRSZcl, by = "TaxonName") %>%
   mutate(Species = as_factor(Species)) %>%
   drop_na(Species) %>%
-  group_by(Sample, StartDate, Species) %>%
+  group_by(TripCode, StartDate, Species) %>%
   summarise(ZAbund_m3 = sum(ZAbund_m3, na.rm = TRUE), .groups = "drop") 
 
 for (i in 1:nlevels(NRSnCop2$Species)) {
@@ -641,19 +640,19 @@ for (i in 1:nlevels(NRSnCop2$Species)) {
     droplevels() 
   
   ncopes <- NRSSamp %>% filter(grepl('Z', SampleType)) %>% 
-    left_join(ncopes, by = "Sample") %>%
+    left_join(ncopes, by = "TripCode") %>%
     mutate(StartDate = replace(StartDate, is.na(StartDate), Dates$StartDate),
            Species = replace(Species, is.na(Species), Dates$Species),
            ZAbund_m3 = replace(ZAbund_m3, StartDate>SampleDateLocal, -999), 
            ZAbund_m3 = replace(ZAbund_m3, StartDate<SampleDateLocal & is.na(ZAbund_m3), 0)) %>% 
-    group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
+    group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
     summarise(ZAbund_m3 = sum(ZAbund_m3), .groups = "drop") %>% 
     as.data.frame()     
   NRSnCop1 <- rbind(NRSnCop1, ncopes)
 }
 
 NRSnCop1 <- NRSnCop1 %>% 
-  group_by(NRScode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
+  group_by(TripCode, Station, Latitude, Longitude, SampleDateLocal, Year, Month, Day, Time_24hr, Species) %>%
   summarise(ZAbund_m3 = max(ZAbund_m3), .groups = "drop") %>% 
   arrange(-desc(Species)) %>% 
   as.data.frame() 
