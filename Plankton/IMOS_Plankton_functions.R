@@ -22,8 +22,8 @@ get_NRSStation <- function(){
 # Bring in all NRS samples
 getNRSTrips <- function(){
     NRSSamp <- read_csv("https://raw.githubusercontent.com/PlanktonTeam/IMOS_Toolbox/master/Plankton/RawData/BGC_Trip.csv", na = "") %>% 
-      rename(TripCode = TRIP_CODE, Station = STATION, Latitude = LATITUDE, Longitude = LONGITUDE, SampleDateLocal = SAMPLEDATELOCAL, 
-             TripCode = TRIP_CODE, Biomass_mgm3 = BIOMASS_MGM3, SampleType = SAMPLETYPE) %>%
+      rename(TripCode = TRIP_CODE, Station = STATION, Latitude = LATITUDE, Longitude = LONGITUDE, SampleDateLocal = SAMPLEDATELOCAL,  
+             Biomass_mgm3 = BIOMASS_MGM3, Secchi_m = SECCHI_M, SampleType = SAMPLETYPE) %>%
       filter(PROJECTNAME == "NRS") %>% 
       mutate(Year = year(SampleDateLocal),
              Month = month(SampleDateLocal),
@@ -31,7 +31,7 @@ getNRSTrips <- function(){
              Time_24hr = str_sub(SampleDateLocal, -8, -1), # hms doesn"t seem to work on 00:00:00 times
              tz = tz_lookup_coords(Latitude, Longitude, method = "fast"),
              SampleDateUTC = with_tz(force_tzs(SampleDateLocal, tz, roll = TRUE), "UTC")) %>% 
-      select(TripCode:SampleDateLocal, Year:SampleDateUTC, Biomass_mgm3) %>%
+      select(TripCode:SampleDateLocal, Year:SampleDateUTC, Biomass_mgm3, Secchi_m) %>%
       select(-tz)
   return(NRSSamp)
 }

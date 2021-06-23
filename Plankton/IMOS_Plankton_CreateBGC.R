@@ -25,7 +25,7 @@ outD <- "Output"
 
 # Each trip and depth combination for water quality parameters
 # the number of rows in this table should equal that in comb, if not look out for duplicates and replicates
-NRSTrips <- get_NRSTrips()
+NRSTrips <- getNRSTrips() %>% select(-SampleType)
 
 # you will get a warning about the fast method, this actually works better than the accurate method for this data set. 
 
@@ -33,72 +33,70 @@ NRSTrips <- get_NRSTrips()
 Chemistry <- getChemistry()
 
 # Zooplankton biomass
-ZBiomass <-  getNRSSamples() %>% select(NRScode, Biomass_mgm3) %>%
-  mutate(SampleDepth_m = 'WC')
+ZBiomass <-  getNRSTrips() %>% select(TripCode, Biomass_mgm3, Secchi_m) %>%
+  mutate(SampleDepth_m = 'WC') 
 
 # Pigments data
-Pigments <- read_csv(paste0(rawD,.Platform$file.sep,"nrs_pigments.csv"), na = "(null)") %>% 
-  rename(NRScode = NRS_TRIP_CODE,
-         SampleDepth_m = SAMPLE_DEPTH_M) %>%
-  mutate(SampleDepth_m = as.character(SampleDepth_m),
-         NRScode = substring(NRScode,4)) %>% 
-  filter(QC_FLAG %in% c(0,1,2,5,8)) %>% # keep data flagged as good
-  select(-QC_FLAG) %>%
+Pigments <- read_csv(paste0(rawD,.Platform$file.sep,"BGC_Pigments.csv"), na = "(null)") %>% 
+  rename(TripCode = TRIP_CODE,
+         SampleDepth_m = SAMPLEDEPTH_M) %>%
+  mutate(SampleDepth_m = as.character(SampleDepth_m)) %>% 
+  filter(PIGMENTS_FLAG %in% c(0,1,2,5,8)) %>% # keep data flagged as good
+  select(-PIGMENTS_FLAG) %>%
   untibble()
 
 # Flow cytometry picoplankton data
-Pico <- read_csv(paste0(rawD,.Platform$file.sep,"nrs_picoplankton.csv"), na = "(null)") %>% 
-  rename(NRScode = NRS_TRIP_CODE,
-         SampleDepth_m = SAMPLE_DEPTH_M, Prochlorococcus_cells_ml = PROCHLOROCOCCUS_CELLSPERML, Synecochoccus_cells_ml = SYNECOCHOCCUS_CELLSPERML, 
-         Picoeukaryotes_cells_ml = PICOEUKARYOTES_CELLSPERML) %>%
+Pico <- read_csv(paste0(rawD,.Platform$file.sep,"BGC_Picoplankton.csv"), na = "(null)") %>% 
+  rename(TripCode = TRIP_CODE,
+         SampleDepth_m = SAMPLEDEPTH_M, Prochlorococcus_cellsml = PROCHLOROCOCCUS_CELLSML, Synecochoccus_cellsml = SYNECOCHOCCUS_CELLSML, 
+         Picoeukaryotes_cellsml = PICOEUKARYOTES_CELLSML) %>%
   mutate(SampleDepth_m = as.character(SampleDepth_m),
-         NRScode = substring(NRScode,4),
-         Prochlorococcus_cells_ml = ifelse(PROCHLOROCOCCUS_FLAG %in% c(3,4,9), NA, Prochlorococcus_cells_ml), # remove bad data
-         Synecochoccus_cells_ml = ifelse(SYNECOCHOCCUS_FLAG %in% c(3,4,9), NA, Synecochoccus_cells_ml),
-         Picoeukaryotes_cells_ml = ifelse(PICOEUKARYOTES_FLAG %in% c(3,4,9), NA, Picoeukaryotes_cells_ml)) %>%
-  group_by(NRScode, SampleDepth_m) %>% 
-  summarise(Prochlorococcus_cells_ml = mean(Prochlorococcus_cells_ml, na.rm = TRUE), # mean of replicates
-            Synecochoccus_cells_ml = mean(Synecochoccus_cells_ml, na.rm = TRUE),
-            Picoeukaryotes_cells_ml = mean(Picoeukaryotes_cells_ml, na.rm = TRUE),
+         Prochlorococcus_cellsml = ifelse(PROCHLOROCOCCUS_FLAG %in% c(3,4,9), NA, Prochlorococcus_cellsml), # remove bad data
+         Synecochoccus_cellsml = ifelse(SYNECOCHOCCUS_FLAG %in% c(3,4,9), NA, Synecochoccus_cellsml),
+         Picoeukaryotes_cellsml = ifelse(PICOEUKARYOTES_FLAG %in% c(3,4,9), NA, Picoeukaryotes_cellsml)) %>%
+  group_by(TripCode, SampleDepth_m) %>% 
+  summarise(Prochlorococcus_cellsml = mean(Prochlorococcus_cellsml, na.rm = TRUE), # mean of replicates
+            Synecochoccus_cellsml = mean(Synecochoccus_cellsml, na.rm = TRUE),
+            Picoeukaryotes_cellsml = mean(Picoeukaryotes_cellsml, na.rm = TRUE),
             .groups = "drop") %>% 
   untibble()
 
 # Total suspended solid data
-TSS <- read_csv(paste0(rawD,.Platform$file.sep,"nrs_TSS.csv"), na = "(null)") %>% 
-  rename(NRScode = NRS_TRIP_CODE, SampleDepth_m = SAMPLE_DEPTH_M, TSS_mg_L = TSS_MG_PER_L, 
-         InorganicFraction_mg_L = INORGANIC_FRACTION_MG_PER_L, 
-         OrganicFraction_mg_L = ORGANIC_FRACTION_MG_PER_L, Secchi_m = SECCHI_DEPTH_M) %>%
+TSS <- read_csv(paste0(rawD,.Platform$file.sep,"BGC_TSS.csv"), na = "(null)") %>% 
+  rename(TripCode = TRIP_CODE, SampleDepth_m = SAMPLEDEPTH_M, TSS_mgL = TSS_MGL, 
+         InorganicFraction_mgL = INORGANICFRACTION_MGL, 
+         OrganicFraction_mgL = ORGANICFRACTION_MGL, Secchi_m = SECCHIDEPTH_M) %>%
   mutate(SampleDepth_m = as.character(SampleDepth_m),
-         NRScode = substring(NRScode,4),
-         TSS_mg_L = ifelse(TSS_FLAG %in% c(3,4,9), NA, TSS_mg_L), # remove bad data
-         InorganicFraction_mg_L = ifelse(TSS_FLAG %in% c(3,4,9), NA, InorganicFraction_mg_L),
-         OrganicFraction_mg_L = ifelse(TSS_FLAG %in% c(3,4,9), NA, OrganicFraction_mg_L)) %>%
-  group_by(NRScode, SampleDepth_m) %>% 
-  summarise(TSS_mg_L = mean(TSS_mg_L, na.rm = TRUE), # mean of replicates
-            InorganicFraction_mg_L = mean(InorganicFraction_mg_L, na.rm = TRUE),
-            OrganicFraction_mg_L = mean(OrganicFraction_mg_L, na.rm = TRUE),
+         TripCode = substring(TripCode,4),
+         TSS_mg_L = ifelse(TSSFLAG %in% c(3,4,9), NA, TSS_mgL), # remove bad data
+         InorganicFraction_mgL = ifelse(TSSFLAG %in% c(3,4,9), NA, InorganicFraction_mgL),
+         OrganicFraction_mgL = ifelse(TSSFLAG %in% c(3,4,9), NA, OrganicFraction_mgL)) %>%
+  group_by(TripCode, SampleDepth_m) %>% 
+  summarise(TSS_mgL = mean(TSS_mgL, na.rm = TRUE), # mean of replicates
+            InorganicFraction_mgL = mean(InorganicFraction_mgL, na.rm = TRUE),
+            OrganicFraction_mgL = mean(OrganicFraction_mgL, na.rm = TRUE),
             .groups = "drop") %>% 
+  drop_na(SampleDepth_m) %>%
   untibble()
 
 # Secchi Disc        
-Secchi <- read_csv(paste0(rawD,.Platform$file.sep,"nrs_TSS.csv"), na = "(null)") %>% 
-  rename(NRScode = NRS_TRIP_CODE, SampleDepth_m = SAMPLE_DEPTH_M, Secchi_m = SECCHI_DEPTH_M) %>%
-  select(NRScode, Secchi_m, SampleDepth_m) %>% 
+Secchi <- read_csv(paste0(rawD,.Platform$file.sep,"BGC_TSS.csv"), na = "(null)") %>% 
+  rename(TripCode = TRIP_CODE, SampleDepth_m = SAMPLEDEPTH_M, Secchi_m = SECCHIDEPTH_M) %>%
+  select(TripCode, Secchi_m, SampleDepth_m) %>% 
   distinct() %>%
   mutate(SampleDepth_m = "WC",
-         NRScode = substring(NRScode,4))
+         TripCode = substring(TripCode,4))
 
 # CTD Cast Data
 CTD <- getCTD() %>%
-    mutate(SampleDepth_m = as.character(round(SampleDepth_m, 0))) %>% 
-    select(-c(PRES, CTDSpecificConductivity_Sm)) %>%
-    group_by(NRScode, SampleDepth_m) %>% summarise(CTDDensity_kgm3 = mean(CTDDensity_kgm3, na.rm = TRUE),
-                                                   CTDTemperature = mean(CTDTemperature, na.rm = TRUE),
-                                                   CTDPAR_umolm2s = mean(CTDPAR_umolm2s, na.rm = TRUE),
-                                                   CTDConductivity_sm = mean(CTDConductivity_sm, na.rm = TRUE),
-                                                   CTDSalinity = mean(CTDSalinity, na.rm = TRUE),
-                                                   CTDChlF_mgm3 = mean(CTDChlF_mgm3, na.rm = TRUE),
-                                                   CTDTurbidity_ntu = mean(CTDTurbidity_ntu, na.rm = TRUE)) %>%
+    mutate(SampleDepth_m = as.character(round(Depth_m, 0))) %>% 
+    select(-c(Pressure_dbar)) %>%
+    group_by(TripCode, SampleDepth_m) %>% summarise(CTDDensity_kgm3 = mean(WaterDensity_kgm3, na.rm = TRUE),
+                                                   CTDTemperature = mean(Temperature_degC, na.rm = TRUE),
+                                                   CTDConductivity_sm = mean(Conductivity_Sm, na.rm = TRUE),
+                                                   CTDSalinity = mean(Salinity_psu, na.rm = TRUE),
+                                                   CTDChlF_mgm3 = mean(Chla_mgm3, na.rm = TRUE),
+                                                   CTDTurbidity_ntu = mean(Turbidity_NTU, na.rm = TRUE)) %>%
     untibble()
 
 notrips <-  read_csv(paste0(rawD,.Platform$file.sep,"nrs_CTD.csv"), na = "(null)",
@@ -106,22 +104,26 @@ notrips <-  read_csv(paste0(rawD,.Platform$file.sep,"nrs_CTD.csv"), na = "(null)
                                       PAR = col_double(),
                                       SPEC_CNDC = col_double())) %>% select(NRS_TRIP_CODE) %>% distinct()
 
+# combine for all samples taken
+Samples <- rbind(Chemistry %>% select(TripCode, SampleDepth_m),
+                 Pico %>% select(TripCode, SampleDepth_m),
+                 Pigments %>% select(TripCode, SampleDepth_m),
+                 TSS %>% select(TripCode, SampleDepth_m),
+                 ZBiomass %>% select(TripCode, SampleDepth_m)) %>%
+  unique()
 
 # Combined BGC data for each station at the sample depth
-BGC <- NRSTrips %>% mutate(IMOSsampleCode = paste0('NRS',NRScode, '_', ifelse(SampleDepth_m == 'WC', 'WC', str_pad(SampleDepth_m, 3, side = "left", "0")))) %>%
-  left_join(ZBiomass %>% 
-              select(NRScode, SampleDepth_m, Biomass_mgm3), by = c("NRScode", "SampleDepth_m")) %>%
-  left_join(Secchi,  by = c("NRScode", "SampleDepth_m")) %>%
-  left_join(Chemistry, by = c("NRScode", "SampleDepth_m")) %>%
-  left_join(Pico, by = c("NRScode", "SampleDepth_m")) %>%
-  left_join(Pigments, by = c("NRScode", "SampleDepth_m")) %>%
-  left_join(TSS, by = c("NRScode", "SampleDepth_m")) %>%
-  left_join(CTD, by = c("NRScode", "SampleDepth_m")) 
+BGC <- Samples %>% left_join(NRSTrips,  by = c("TripCode")) %>% mutate(IMOSsampleCode = paste0('NRS',TripCode, '_', ifelse(SampleDepth_m == 'WC', 'WC', str_pad(SampleDepth_m, 3, side = "left", "0")))) %>%
+  left_join(Chemistry, by = c("TripCode", "SampleDepth_m")) %>%
+  left_join(Pico, by = c("TripCode", "SampleDepth_m")) %>%
+  left_join(Pigments, by = c("TripCode", "SampleDepth_m")) %>%
+  left_join(TSS, by = c("TripCode", "SampleDepth_m")) %>%
+  left_join(CTD, by = c("TripCode", "SampleDepth_m")) 
 
 # test table
 # n should be 1, replicates or duplicate samples will have values > 1
 test <- BGC %>% 
-  group_by(NRScode, SampleDepth_m) %>% 
+  group_by(TripCode, SampleDepth_m) %>% 
   summarise(n = n(),
             .groups = "drop")
 
