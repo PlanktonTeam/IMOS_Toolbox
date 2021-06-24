@@ -42,7 +42,7 @@ Pigments <- read_csv(paste0(rawD,.Platform$file.sep,"BGC_Pigments.csv"), na = "(
          SampleDepth_m = SAMPLEDEPTH_M) %>%
   mutate(SampleDepth_m = as.character(SampleDepth_m)) %>% 
   filter(PIGMENTS_FLAG %in% c(0,1,2,5,8)) %>% # keep data flagged as good
-  select(-PIGMENTS_FLAG) %>%
+  select(-c(PIGMENTS_FLAG, PIGMENTS_COMMENTS)) %>%
   untibble()
 
 # Flow cytometry picoplankton data
@@ -79,14 +79,6 @@ TSS <- read_csv(paste0(rawD,.Platform$file.sep,"BGC_TSS.csv"), na = "(null)") %>
   drop_na(SampleDepth_m) %>%
   untibble()
 
-# Secchi Disc        
-Secchi <- read_csv(paste0(rawD,.Platform$file.sep,"BGC_TSS.csv"), na = "(null)") %>% 
-  rename(TripCode = TRIP_CODE, SampleDepth_m = SAMPLEDEPTH_M, Secchi_m = SECCHIDEPTH_M) %>%
-  select(TripCode, Secchi_m, SampleDepth_m) %>% 
-  distinct() %>%
-  mutate(SampleDepth_m = "WC",
-         TripCode = substring(TripCode,4))
-
 # CTD Cast Data
 CTD <- getCTD() %>%
     mutate(SampleDepth_m = as.character(round(Depth_m, 0))) %>% 
@@ -98,11 +90,6 @@ CTD <- getCTD() %>%
                                                    CTDChlF_mgm3 = mean(Chla_mgm3, na.rm = TRUE),
                                                    CTDTurbidity_ntu = mean(Turbidity_NTU, na.rm = TRUE)) %>%
     untibble()
-
-notrips <-  read_csv(paste0(rawD,.Platform$file.sep,"nrs_CTD.csv"), na = "(null)",
-                     col_types = cols(PRES = col_double(), # columns start with nulls so tidyverse annoyingly assigns col_logical()
-                                      PAR = col_double(),
-                                      SPEC_CNDC = col_double())) %>% select(NRS_TRIP_CODE) %>% distinct()
 
 # combine for all samples taken
 Samples <- rbind(Chemistry %>% select(TripCode, SampleDepth_m),
