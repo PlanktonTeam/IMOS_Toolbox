@@ -28,7 +28,8 @@ outD <- "Output"
 # ensure we have all trips accounted for 
 # note there are circumstances where a trip won't have a phyto and a zoo samples due to loss of sample etc.
 
-NRSdat <- getNRSTrips() %>% select(-SampleType) #ignore warning, 'fast' method does better here than 'accurate'
+NRSdat <- getNRSTrips() %>% select(-SampleType) %>%
+   filter(Station != 'Port Hacking 4') #ignore warning, 'fast' method does better here than 'accurate'
   
 dNRSdat <- distinct(NRSdat, TripCode, .keep_all = TRUE) %>%  # Distinct rows for satellite, should be anyway
   rename(Date = SampleDateLocal) %>% 
